@@ -3,7 +3,7 @@
         "project": 2,
         "detail": 3,
         "time": 0,
-        "political": 2,
+        "political": 3,
         "hype": 2,
         "helpful": 2,
         "party": 2,

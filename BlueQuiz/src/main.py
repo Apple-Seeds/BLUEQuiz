@@ -209,11 +209,50 @@ def emailUser(info):
         involvement. Check out the options listed below or browse for other opportunities listed on our website. We 
         can’t wait to hear your perspectives and ideas and together change our school for the better. """
     html = """\
+        <!DOCTYPE html>
         <html>
+	        <head>
+		        <style type="text/css" media="screen">
+			        img {
+                        display: block;
+                        margin-left: auto;
+                        margin-right: auto;
+                        max-width: 100%;
+                        height:  auto;
+                        object-fit: contain;
+                        align-content: center;
+                    }
+                    h1{
+                        font-family:garamond;
+                        text-align: center;
+                    }
+                    p{
+                        font-family:sans-serif;
+                        text-align: center;
+                        font-size: 16pt;
+                    }
+                    table{
+                        background-color: #0F2439;
+                        border-spacing: 0;
+                        border-collapse: collapse;
+                        table-layout: fixed;
+                        margin: 0;
+                    }
+                </style>
+            </head>
             <body>
-                <img src="https://math.usu.edu/ldp/galleries/.private_ldp/a68540/production/master/c3bc1389-5787-4101-92d0-91c4fde8df13.jpg" alt="Drone view of Old Main">
-                <h3>“The only way you can taste life is with involvement.” <em>Sadhguru</em></h3>
-                <p>Thank you for filling out our survey. You are a great match for the following three committees. Our goal here at USU is to cultivate an environment of development and growth and we need your help. Every single student can make a difference in our community and help others feel welcomed and heard, and it starts with involvement. Check out the options listed below or browse for other opportunities listed on our website. We can’t wait to hear your perspectives and ideas and together change our school for the better.</p>
+                <div style="background-color: #0F2439; backface-visibility: 75%;" >
+                    <img src="https://www.usu.edu/admissions/images/USU_Get_Involved.jpg" alt="Students playing pool">
+                </div>
+                <div style="background-color:#eee; padding:8px; word-wrap: break-word;">
+                    <h1>"The only way you can taste life is with involvement.” - <em>Sadhguru</em></h1>
+                    <p style="font-family:garamond";>Thank you for filling out our survey. You are a great match for the following three committees. Our goal here at USU is to cultivate an environment of development and growth and we need your help. Every single student can make a difference in our community and help others feel welcomed and heard, and it starts with involvement. Check out the options listed below or browse for other opportunities listed on <a href="https://www.usu.edu/involvement/"?>our website</a>. <br>We can’t wait to hear your perspectives and ideas and together change our school for the better. </p>
+                </div>
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                    <tbody>
+                        <tr>
+                            <td aria-hidden="true" height="40" style="font-size: 0px; line-height: 0px;">&nbsp;</td>
+                        </tr>
         """
     for x in range(3):
         text += orgs[info[x+1]][0]
@@ -225,6 +264,8 @@ def emailUser(info):
                 html += councils[x][1]
                 x += 1
     html += """
+                    </tbody>
+                </table>
             </body>
         </html>
         """
@@ -421,4 +462,4 @@ if __name__ == '__main__':
     fileObj = open(filepath)
     lineProcessor(fileObj)
     fileObj.close()
-    os.remove(filepath)
+    # os.remove(filepath)
