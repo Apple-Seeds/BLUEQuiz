@@ -243,10 +243,10 @@ And that's it! That's the program, ideally. Again, subject to change as I actual
 	def getFile():
 		""" This function locates the CSV file with 'BRQ' in it, and pulls from that. """
 		try:
-			filepath = glob.glob('../**/BRQ*')[0]  # Takes the first file with 'BRQ' in the directory.
+			path = glob.glob('../**/BRQ*')[0]  # Takes the first file with 'BRQ' in the directory.
 		except IndexError:
 			sys.exit(1)
-		return filepath
+		return path
 
 ### LineProcessor
 	def lineProcessor(file):
@@ -360,23 +360,22 @@ And that's it! That's the program, ideally. Again, subject to change as I actual
 		# Q9: --------------------------------
 		if data[9] == 1:
 			# ===not sure what to add to here===
+			attributes["political"] += 1
 		elif data[9] == 2:
 			attributes["helpful"] += 3
 			attributes["spirit"] += 3
 			attributes["service"] += 3
 		elif data[9] == 3:
-			--Add points to 'mentor' and 'extroverted' and 'leader'
 			attributes["mentor"] += 3
 			attributes["extroverted"] += 3
 			attributes["leader"] += 3
 		elif data[9] == 4:
-			--Add points to 'political' and 'leader'
 			attributes["political"] += 3
 			attributes["leader"] += 3
 		elif data[9] == 5:
 			attributes["detail"] += 3
 			attributes["leader"] += 3
-		elif data[9] == 6
+		elif data[9] == 6:
 			attributes["extroverted"] += 3
 		# Q10: --------------------------------
 		attributes["planner"] += 3
@@ -387,7 +386,7 @@ And that's it! That's the program, ideally. Again, subject to change as I actual
 		''' If future organizations are added, add the lines here. Add them to the dictionary as well. '''
 		orgs["pcab"] = (attributes["leader"] + attributes["service"] + attributes["project"] + attributes["political"])
 		orgs["fees"] = (attributes["detail"] + attributes["time"])
-		orgs["grc"] = (attributes[political] + attributes["academic"])
+		orgs["grc"] = (attributes["political"] + attributes["academic"])
 		orgs["blucru"] = (attributes["service"] + attributes["hype"] + attributes["helpful"])
 		orgs["activity"] = (attributes["party"] + attributes["planner"] + attributes["extroverted"])
 		orgs["series"] = (attributes["extroverted"] + attributes["creative"] + attributes["music"])
@@ -404,10 +403,9 @@ And that's it! That's the program, ideally. Again, subject to change as I actual
 
 		# Reporting
 		impInfo = [data[0]]
-		orgs = sorted(orgs.items(), key=lambda x:x[1], reverse=true)
-		orgList = orgs.keys()
+		orgsList = sorted(orgs.keys(), key=lambda x:x[1], reverse=True)
 		for x in range(3):
-			impInfo.append(orgList[x])
+			impInfo.append(orgsList[x])
 		if data[1] < 9:
 			for el in colleges:
 				impInfo.append(el)
@@ -422,179 +420,178 @@ And that's it! That's the program, ideally. Again, subject to change as I actual
 		password = "" # Undetermined as of yet
 		message = MIMEMultipart("alternative")
 		orgs = {
-			"pcab": ["""
-			President's Cabinet
-			Purpose: Work on initiatives set by the USUSA President. It’s function/form is different from year-to-year, but for our purposes PCab is focused on:
-			\t 1. Enhancing equity on USU campuses
-			\t 2. Increasing access to involvement opportunities
-			\t 3. Amplifying student voices
-			\t 4. Promoting & fundraising for scholarship opportunities that incentivize service & leadership.
-			Application Link:
-			""", 
-			"""
-			<p><b>President's Cabinet</b><br>
-				<b>Purpose:</b> Work on initiatives set by the USUSA President. It’s function/form is different from year-to-year, but for our purposes PCab is focused on:
-				<ol>
-				<li>Enhancing equity on USU campuses</li>
-				<li>Increasing access to involvement opportunities</li>
-				<li>Amplifying student voices</li>
-				<li>Promoting & fundraising for scholarship opportunities that incentivize service & leadership.</li>
-				</ol>
-				<b>Application Link:</b> 
-			"""],
+            "pcab": ["""
+            President's Cabinet
+            Purpose: Work on initiatives set by the USUSA President. It’s function/form is different from year-to-year, but for our purposes PCab is focused on:
+            \t 1. Enhancing equity on USU campuses
+            \t 2. Increasing access to involvement opportunities
+            \t 3. Amplifying student voices
+            \t 4. Promoting & fundraising for scholarship opportunities that incentivize service & leadership.
+            Application Link:
+            """,
+            """
+            <p><b>President's Cabinet</b><br>
+                <b>Purpose:</b> Work on initiatives set by the USUSA President. It’s function/form is different from year-to-year, but for our purposes PCab is focused on:
+                <ol>
+                <li>Enhancing equity on USU campuses</li>
+                <li>Increasing access to involvement opportunities</li>
+                <li>Amplifying student voices</li>
+                <li>Promoting & fundraising for scholarship opportunities that incentivize service & leadership.</li>
+                </ol>
+                <b>Application Link:</b> 
+            """],
+            
+            "fees": ["""
+            Student Fee Board
+            Purpose: Advisory board to the University President to decide on student fees. Receives presentations, discusses, reviews, & votes on whether or not to recommend a change in student fees.
+            Application Link:
+            """,
+            """
+            <p><b>Student Fee Board</b><br>
+                <b>Purpose:</b> Advisory board to the University President to decide on student fees. Receives presentations, discusses, reviews, & votes on whether or not to recommend a change in student fees.<br>
+                <b>Application Link:</b> 
+            """],
 
-	        "fees": ["""
-			Student Fee Board
-			Purpose: Advisory board to the University President to decide on student fees. Receives presentations, discusses, reviews, & votes on whether or not to recommend a change in student fees.
-			Application Link:
-			""",
-			"""
-			<p><b>Student Fee Board</b><br>
-				<b>Purpose:</b> Advisory board to the University President to decide on student fees. Receives presentations, discusses, reviews, & votes on whether or not to recommend a change in student fees.<br>
-				<b>Application Link:</b> 
-			"""],
+            "grc": ["""
+            Government Relations Council (GRC)
+            Purpose: Advocate for student interest to state & local officials & raise awareness of civic issues on campus. Plans Gripe Night, Voter Registration, & Aggie Ice Cream Day on the Hill
+            Application Link:
+            """,
+            """
+            <p><b>Government Relations Council (GRC)</b><br>
+                <b>Purpose:</b> Advocate for student interest to state & local officials & raise awareness of civic issues on campus. Plans Gripe Night, Voter Registration, & Aggie Ice Cream Day on the Hill<br>
+                <b>Application Link:</b> 
+            """],
 
-	        "grc": """
-			Government Relations Council (GRC)
-			Purpose: Advocate for student interest to state & local officials & raise awareness of civic issues on campus. Plans Gripe Night, Voter Registration, & Aggie Ice Cream Day on the Hill
-			Application Link:
-			""",
-			"""
-			<p><b>Government Relations Council (GRC)</b><br>
-				<b>Purpose:</b> Advocate for student interest to state & local officials & raise awareness of civic issues on campus. Plans Gripe Night, Voter Registration, & Aggie Ice Cream Day on the Hill<br>
-				<b>Application Link:</b> 
-			"""],
+            "blucru": ["""
+            Blue Crew
+            Purpose: Assist in the marketing of events & helps set up/take down for events
+            Application Link:
+            """,
+            """
+            <p><b>Blue Crew</b><br>
+                <b>Purpose:</b> Assist in the marketing of events & helps set up/take down for events<br>
+                <b>Application Link:</b> 
+            """],
 
-	        "blucru": """
-			Blue Crew
-			Purpose: Assist in the marketing of events & helps set up/take down for events
-			Application Link:
-			""",
-			"""
-			<p><b>Blue Crew</b><br>
-				<b>Purpose:</b> Assist in the marketing of events & helps set up/take down for events<br>
-				<b>Application Link:</b> 
-			"""],
+            "activity": ["""
+            Activities Committee
+            Purpose: Plans & executes The Howl, Mardi Gras, & End of Year Bash
+            Application Link:
+            """,
+            """
+            <p><b>Activities Committee</b><br>
+                <b>Purpose:</b> Plans & executes The Howl, Mardi Gras, & End of Year Bash<br>
+                <b>Application Link:</b> 
+            """],
 
-	        "activity": """
-			Activities Committee
-			Purpose: Plans & executes The Howl, Mardi Gras, & End of Year Bash
-			Application Link:
-			""",
-			"""
-			<p><b>Activities Committee</b><br>
-				<b>Purpose:</b> Plans & executes The Howl, Mardi Gras, & End of Year Bash<br>
-				<b>Application Link:</b> 
-			"""],
+            "series": ["""
+            Series Committee
+            Purpose: Plans & executes regular/recurring events that are generally more artistic like PoBev & Moonlight & Music
+            Application Link:
+            """,
+            """
+            <p><b>Series Committee</b><br>
+                <b>Purpose:</b> Plans & executes regular/recurring events that are generally more artistic like PoBev & Moonlight & Music<br>
+                <b>Application Link:</b> 
+            """],
 
-	        "series": """
-	        Series Committee
-			Purpose: Plans & executes regular/recurring events that are generally more artistic like PoBev & Moonlight & Music
-			Application Link:
-			""",
-			"""
-			<p><b>Series Committee</b><br>
-				<b>Purpose:</b> Plans & executes regular/recurring events that are generally more artistic like PoBev & Moonlight & Music<br>
-				<b>Application Link:</b> 
-			"""],
+            "trad": ["""
+            Traditions Committee
+            Purpose: Plans & executes Homecoming week, Mr.USU, Sweater Swap, & High Stakes Bingo
+            Application Link:
+            """,
+            """
+            <p><b>Traditions Committee</b><br>
+                <b>Purpose:</b> Plans & executes Homecoming week, Mr.USU, Sweater Swap, & High Stakes Bingo<br>
+                <b>Application Link:</b> 
+            """],
 
-	        "trad": """
-	        Traditions Committee
-			Purpose: Plans & executes Homecoming week, Mr.USU, Sweater Swap, & High Stakes Bingo
-			Application Link:
-			""",
-			"""
-			<p><b>Traditions Committee</b><br>
-				<b>Purpose:</b> Plans & executes Homecoming week, Mr.USU, Sweater Swap, & High Stakes Bingo<br>
-				<b>Application Link:</b> 
-			"""],
+            "hurd": ["""
+            HURD Committee
+            Purpose: Spread awareness & excitement around USU athletics, plan events & initiatives that increases attendance at games, promotes HURD Premium, & focuses on supporting women’s sports
+            Application Link:
+            """,
+            """
+            <p><b>HURD Committee</b><br>
+                <b>Purpose:</b> Spread awareness & excitement around USU athletics, plan events & initiatives that increases attendance at games, promotes HURD Premium, & focuses on supporting women’s sports<br>
+                <b>Application Link:</b> 
+            """],
 
-	        "hurd": """
-	        HURD Committee
-			Purpose: Spread awareness & excitement around USU athletics, plan events & initiatives that increases attendance at games, promotes HURD Premium, & focuses on supporting women’s sports
-			Application Link:
-			""",
-			"""
-			<p><b>HURD Committee</b><br>
-				<b>Purpose:</b> Spread awareness & excitement around USU athletics, plan events & initiatives that increases attendance at games, promotes HURD Premium, & focuses on supporting women’s sports<br>
-				<b>Application Link:</b> 
-			"""],
+            "council": ["""
+            College Councils
+            Purpose: Advocate for student interests to their college’s administration (deans & department heads), plan & execute service projects & college specific events. Each college has its own week filled with events.
+            """,
+            """
+            <p><b>College Councils</b><br>
+                <b>Purpose:</b> Advocate for student interests to their college’s administration (deans & department heads), plan & execute service projects & college specific events. Each college has its own week filled with events.<br>
+            """],
 
-	        "council": """
-	        College Councils
-			Purpose: Advocate for student interests to their college’s administration (deans & department heads), plan & execute service projects & college specific events. Each college has its own week filled with events.
-			""",
-			"""
-			<p><b>College Councils</b><br>
-				<b>Purpose:</b> Advocate for student interests to their college’s administration (deans & department heads), plan & execute service projects & college specific events. Each college has its own week filled with events.<br>
-			"""],
+            "saa": ["""
+            Student Alumni Association
+            Purpose: Create lifelong aggies. Focuses on donors and guest speakers. Engage alumni. Plan & execute initiatives to connect students with alumni. Also, True Aggie Night, Miss USU, and A-Day.
+            Application Link:
+            """,
+            """
+            <p><b>Student Alumni Association</b><br>
+                <b>Purpose:</b> Create lifelong aggies. Focuses on donors and guest speakers. Engage alumni. Plan & execute initiatives to connect students with alumni. Also, True Aggie Night, Miss USU, and A-Day.<br>
+                <b>Application Link:</b> 
+            """],
 
-	        "saa": """
-	        Student Alumni Association
-			Purpose: Create lifelong aggies. Focuses on donors and guest speakers. Engage alumni. Plan & execute initiatives to connect students with alumni. Also, True Aggie Night, Miss USU, and A-Day.
-			Application Link:
-			""",
-			"""
-			<p><b>Student Alumni Association</b><br>
-				<b>Purpose:</b> Create lifelong aggies. Focuses on donors and guest speakers. Engage alumni. Plan & execute initiatives to connect students with alumni. Also, True Aggie Night, Miss USU, and A-Day.<br>
-				<b>Application Link:</b> 
-			"""],
+            "serve": ["""
+            Service Center Programs
+            Purpose: Some of the programs run out of the center are SNAC, gleaning, best buddies, Special Olympics, Athletics United, etc.
+            Application Link:
+            """,
+            """
+            <p><b>Service Center</b><br>
+                <b>Purpose:</b> Some of the programs run out of the center are SNAC, gleaning, best buddies, Special Olympics, Athletics United, etc.<br>
+                <b>Application Link:</b> 
+            """],
 
-	        "serve": """
-	        Service Center Programs
-			Purpose: Some of the programs run out of the center are SNAC, gleaning, best buddies, Special Olympics, Athletics United, etc.
-			Application Link:
-			""",
-			"""
-			<p><b>Service Center</b><br>
-				<b>Purpose:</b> Some of the programs run out of the center are SNAC, gleaning, best buddies, Special Olympics, Athletics United, etc.<br>
-				<b>Application Link:</b> 
-			"""],
+            "states": ["""
+            Statesman
+            Purpose: Student news. Gives students an opportunity to write
+            Application Link:
+            """,
+            """
+            <p><b>Statesman</b><br>
+                <b>Purpose:</b> Student news. Gives students an opportunity to write<br>
+                <b>Application Link:</b> 
+            """],
 
-	        "states": """
-	        Statesman
-			Purpose: Student news. Gives students an opportunity to write
-			Application Link:
-			""",
-			"""
-			<p><b>Statesman</b><br>
-				<b>Purpose:</b> Student news. Gives students an opportunity to write<br>
-				<b>Application Link:</b> 
-			"""],
+            "radio": ["""
+            Aggie Radio
+            Purpose: Provides students with opportunities to DJ, create radio talk shows, podcasts, & plan/coordinate events (mainly concerts)
+            Application Link:
+            """,
+            """
+            <p><b>Aggie Radio</b><br>
+                <b>Purpose:</b> Spread awareness & excitement around USU athletics, plan events & initiatives that increases attendance at games, promotes HURD Premium, & focuses on supporting women’s sports<br>
+                <b>Application Link:</b> 
+            """],
 
-	        "radio": """
-	        Aggie Radio
-			Purpose: Provides students with opportunities to DJ, create radio talk shows, podcasts, & plan/coordinate events (mainly concerts)
-			Application Link:
-			""",
-			"""
-			<p><b>Aggie Radio</b><br>
-				<b>Purpose:</b> Spread awareness & excitement around USU athletics, plan events & initiatives that increases attendance at games, promotes HURD Premium, & focuses on supporting women’s sports<br>
-				<b>Application Link:</b> 
-			"""],
+            "blight": ["""
+            Blue Light
+            Purpose: Meet content creation needs for clients, primarily USUSA
+            Application Link:
+            """,
+            """
+            <p><b>Blue Light</b><br>
+                <b>Purpose:</b> Meet content creation needs for clients, primarily USUSA<br>
+                <b>Application Link:</b> 
+            """],
 
-	        "blight": """
-	        Blue Light
-			Purpose: Meet content creation needs for clients, primarily USUSA
-			Application Link:
-			""",
-			"""
-			<p><b>Blue Light</b><br>
-				<b>Purpose:</b> Meet content creation needs for clients, primarily USUSA<br>
-				<b>Application Link:</b> 
-			"""],
-
-	        "fsl": """
-	        Fraternity & Sorority Life
-			Purpose: Advance personal development through community service, philanthropic fundraising, & activities.
-			Application Link:
-			""",
-			"""
-			<p><b>Fraternity & Sorority Life</b><br>
-				<b>Purpose:</b> Advance personal development through community service, philanthropic fundraising, & activities.<br>
-				<b>Application Link:</b> 
-			"""]
-		}
+            "fsl": ["""
+            Fraternity & Sorority Life
+            Purpose: Advance personal development through community service, philanthropic fundraising, & activities.
+            Application Link:
+            """,
+            """
+            <p><b>Fraternity & Sorority Life</b><br>
+                <b>Purpose:</b> Advance personal development through community service, philanthropic fundraising, & activities.<br>
+                <b>Application Link:</b> 
+            """]		}
 		councils = {
 			1: ["","<b>Arts Application: </b> <a href=""></a><br>"],
 			2: ["","<b>Agriculture Application: </b><a href=""></a><br>"],
