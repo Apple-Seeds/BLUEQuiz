@@ -22,16 +22,28 @@ def emailUser(info):
             \t 4. Promoting & fundraising for scholarship opportunities that incentivize service & leadership.
             Application Link:
             """,
-                 """
-            <p><b>President's Cabinet</b><br>
-                <b>Purpose:</b> Work on initiatives set by the USUSA President. It’s function/form is different from year-to-year, but for our purposes PCab is focused on:
-                <ol>
-                <li>Enhancing equity on USU campuses</li>
-                <li>Increasing access to involvement opportunities</li>
-                <li>Amplifying student voices</li>
-                <li>Promoting & fundraising for scholarship opportunities that incentivize service & leadership.</li>
-                </ol>
-                <b>Application Link:</b> 
+                """
+            <tr>
+                <td aria-hidden="true" height="40" style="font-size: 0px; line-height: 0px;">&nbsp;</td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="http://labs.jensimmons.com/2016/examples/images/testscreen-large.jpg" alt="TestImage" style="width: 100%; max-width: 600px;">
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px 20px 20px 20px; font-family:sans-serif; background-color: #eee; width: 100%; max-width: 560px;">
+                    <h1 style="margin: 0 0 10px; text-align: left; font-family:Georgia, serif;">President's Cabinet</h1>
+                    <p style="text-align: left;"><b>Purpose:</b> Work on initiatives set by the USUSA President. It’s function/form is different from year-to-year, but for our purposes PCab is focused on:</p>
+                    <ol>
+                        <li>Enhancing equity on USU campuses</li>
+                        <li>Increasing access to involvement opportunities</li>
+                        <li>Amplifying student voices</li>
+                        <li>Promoting & fundraising for scholarship opportunities that incentivize service & leadership.</li>
+                    </ol>
+                    <p style="text-align: left; margin: 0 0 10px;"><b>Application Link:</b></p>
+                </td>
+            </tr> 
             """],
 
         "fees": ["""
@@ -39,10 +51,22 @@ def emailUser(info):
             Purpose: Advisory board to the University President to decide on student fees. Receives presentations, discusses, reviews, & votes on whether or not to recommend a change in student fees.
             Application Link:
             """,
-                 """
-            <p><b>Student Fee Board</b><br>
-                <b>Purpose:</b> Advisory board to the University President to decide on student fees. Receives presentations, discusses, reviews, & votes on whether or not to recommend a change in student fees.<br>
-                <b>Application Link:</b> 
+                """
+            <tr>
+                <td aria-hidden="true" height="40" style="font-size: 0px; line-height: 0px;">&nbsp;</td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="http://labs.jensimmons.com/2016/examples/images/testscreen-large.jpg" alt="TestImage" style="width: 100%; max-width: 600px;">
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px 20px 20px 20px; font-family:sans-serif; background-color: #eee; width: 100%; max-width: 560px;">
+                    <h1 style="margin: 0 0 10px; text-align: left; font-family:Georgia, serif;">Student Fee Board</h1>
+                    <p style="text-align: left;"><b>Purpose:</b> Advisory board to the University President to decide on student fees. Receives presentations, discusses, reviews, & votes on whether or not to recommend a change in student fees.</p>
+                    <p style="text-align: left; margin: 0 0 10px;"><b>Application Link:</b></p>
+                </td>
+            </tr>
             """],
 
         "grc": ["""
@@ -51,9 +75,21 @@ def emailUser(info):
             Application Link:
             """,
                 """
-            <p><b>Government Relations Council (GRC)</b><br>
-                <b>Purpose:</b> Advocate for student interest to state & local officials & raise awareness of civic issues on campus. Plans Gripe Night, Voter Registration, & Aggie Ice Cream Day on the Hill<br>
-                <b>Application Link:</b> 
+            <tr>
+                <td aria-hidden="true" height="40" style="font-size: 0px; line-height: 0px;">&nbsp;</td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="http://labs.jensimmons.com/2016/examples/images/testscreen-large.jpg" alt="TestImage" style="width: 100%; max-width: 600px;">
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px 20px 20px 20px; font-family:sans-serif; background-color: #eee; width: 100%; max-width: 560px;">
+                    <h1 style="margin: 0 0 10px; text-align: left; font-family:Georgia, serif;">Government Relations Council (GRC)</h1>
+                    <p style="text-align: left;"><b>Purpose:</b> Advocate for student interest to state & local officials & raise awareness of civic issues on campus. Plans Gripe Night, Voter Registration, & Aggie Ice Cream Day on the Hill</p>
+                    <p style="text-align: left; margin: 0 0 10px;"><b>Application Link:</b></p>
+                </td>
+            </tr>
             """],
 
         "blucru": ["""
@@ -62,9 +98,21 @@ def emailUser(info):
             Application Link:
             """,
                    """
-            <p><b>Blue Crew</b><br>
-                <b>Purpose:</b> Assist in the marketing of events & helps set up/take down for events<br>
-                <b>Application Link:</b> 
+            <tr>
+                <td aria-hidden="true" height="40" style="font-size: 0px; line-height: 0px;">&nbsp;</td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="http://labs.jensimmons.com/2016/examples/images/testscreen-large.jpg" alt="TestImage" style="width: 100%; max-width: 600px;">
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px 20px 20px 20px; font-family:sans-serif; background-color: #eee; width: 100%; max-width: 560px;">
+                    <h1 style="margin: 0 0 10px; text-align: left; font-family:Georgia, serif;">Blue Crew</h1>
+                    <p style="text-align: left;"><b>Purpose:</b> Assist in the marketing of events & helps set up/take down for events</p>
+                    <p style="text-align: left; margin: 0 0 10px;"><b>Application Link:</b></p>
+                </td>
+            </tr>
             """],
 
         "activity": ["""
@@ -73,9 +121,21 @@ def emailUser(info):
             Application Link:
             """,
                      """
-            <p><b>Activities Committee</b><br>
-                <b>Purpose:</b> Plans & executes The Howl, Mardi Gras, & End of Year Bash<br>
-                <b>Application Link:</b> 
+            <tr>
+                <td aria-hidden="true" height="40" style="font-size: 0px; line-height: 0px;">&nbsp;</td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="http://labs.jensimmons.com/2016/examples/images/testscreen-large.jpg" alt="TestImage" style="width: 100%; max-width: 600px;">
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px 20px 20px 20px; font-family:sans-serif; background-color: #eee; width: 100%; max-width: 560px;">
+                    <h1 style="margin: 0 0 10px; text-align: left; font-family:Georgia, serif;">Activities Committee</h1>
+                    <p style="text-align: left;"><b>Purpose:</b> Plans & executes The Howl, Mardi Gras, & End of Year Bash</p>
+                    <p style="text-align: left; margin: 0 0 10px;"><b>Application Link:</b></p>
+                </td>
+            </tr>
             """],
 
         "series": ["""
@@ -84,9 +144,21 @@ def emailUser(info):
             Application Link:
             """,
                    """
-            <p><b>Series Committee</b><br>
-                <b>Purpose:</b> Plans & executes regular/recurring events that are generally more artistic like PoBev & Moonlight & Music<br>
-                <b>Application Link:</b> 
+            <tr>
+                <td aria-hidden="true" height="40" style="font-size: 0px; line-height: 0px;">&nbsp;</td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="http://labs.jensimmons.com/2016/examples/images/testscreen-large.jpg" alt="TestImage" style="width: 100%; max-width: 600px;">
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px 20px 20px 20px; font-family:sans-serif; background-color: #eee; width: 100%; max-width: 560px;">
+                    <h1 style="margin: 0 0 10px; text-align: left; font-family:Georgia, serif;">Series Committee</h1>
+                    <p style="text-align: left;"><b>Purpose:</b> Plans & executes regular/recurring events that are generally more artistic like PoBev & Moonlight & Music</p>
+                    <p style="text-align: left; margin: 0 0 10px;"><b>Application Link:</b></p>
+                </td>
+            </tr>
             """],
 
         "trad": ["""
@@ -95,9 +167,21 @@ def emailUser(info):
             Application Link:
             """,
                  """
-            <p><b>Traditions Committee</b><br>
-                <b>Purpose:</b> Plans & executes Homecoming week, Mr.USU, Sweater Swap, & High Stakes Bingo<br>
-                <b>Application Link:</b> 
+            <tr>
+                <td aria-hidden="true" height="40" style="font-size: 0px; line-height: 0px;">&nbsp;</td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="http://labs.jensimmons.com/2016/examples/images/testscreen-large.jpg" alt="TestImage" style="width: 100%; max-width: 600px;">
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px 20px 20px 20px; font-family:sans-serif; background-color: #eee; width: 100%; max-width: 560px;">
+                    <h1 style="margin: 0 0 10px; text-align: left; font-family:Georgia, serif;">Traditions Committee</h1>
+                    <p style="text-align: left;"><b>Purpose:</b> Plans & executes Homecoming week, Mr.USU, Sweater Swap, & High Stakes Bingo</p>
+                    <p style="text-align: left; margin: 0 0 10px;"><b>Application Link:</b></p>
+                </td>
+            </tr>
             """],
 
         "hurd": ["""
@@ -106,9 +190,21 @@ def emailUser(info):
             Application Link:
             """,
                  """
-            <p><b>HURD Committee</b><br>
-                <b>Purpose:</b> Spread awareness & excitement around USU athletics, plan events & initiatives that increases attendance at games, promotes HURD Premium, & focuses on supporting women’s sports<br>
-                <b>Application Link:</b> 
+            <tr>
+                <td aria-hidden="true" height="40" style="font-size: 0px; line-height: 0px;">&nbsp;</td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="http://labs.jensimmons.com/2016/examples/images/testscreen-large.jpg" alt="TestImage" style="width: 100%; max-width: 600px;">
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px 20px 20px 20px; font-family:sans-serif; background-color: #eee; width: 100%; max-width: 560px;">
+                    <h1 style="margin: 0 0 10px; text-align: left; font-family:Georgia, serif;">HURD Committee</h1>
+                    <p style="text-align: left;"><b>Purpose:</b> Spread awareness & excitement around USU athletics, plan events & initiatives that increases attendance at games, promotes HURD Premium, & focuses on supporting women’s sports</p>
+                    <p style="text-align: left; margin: 0 0 10px;"><b>Application Link:</b></p>
+                </td>
+            </tr>
             """],
 
         "council": ["""
@@ -116,8 +212,18 @@ def emailUser(info):
             Purpose: Advocate for student interests to their college’s administration (deans & department heads), plan & execute service projects & college specific events. Each college has its own week filled with events.
             """,
                     """
-            <p><b>College Councils</b><br>
-                <b>Purpose:</b> Advocate for student interests to their college’s administration (deans & department heads), plan & execute service projects & college specific events. Each college has its own week filled with events.<br>
+            <tr>
+                <td aria-hidden="true" height="40" style="font-size: 0px; line-height: 0px;">&nbsp;</td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="http://labs.jensimmons.com/2016/examples/images/testscreen-large.jpg" alt="TestImage" style="width: 100%; max-width: 600px;">
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px 20px 20px 20px; font-family:sans-serif; background-color: #eee; width: 100%; max-width: 560px;">
+                    <h1 style="margin: 0 0 10px; text-align: left; font-family:Georgia, serif;">College Councils</h1>
+                    <p style="text-align: left;"><b>Purpose:</b> Advocate for student interests to their college’s administration (deans & department heads), plan & execute service projects & college specific events. Each college has its own week filled with events.</p>
             """],
 
         "saa": ["""
@@ -126,9 +232,21 @@ def emailUser(info):
             Application Link:
             """,
                 """
-            <p><b>Student Alumni Association</b><br>
-                <b>Purpose:</b> Create lifelong aggies. Focuses on donors and guest speakers. Engage alumni. Plan & execute initiatives to connect students with alumni. Also, True Aggie Night, Miss USU, and A-Day.<br>
-                <b>Application Link:</b> 
+            <tr>
+                <td aria-hidden="true" height="40" style="font-size: 0px; line-height: 0px;">&nbsp;</td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="http://labs.jensimmons.com/2016/examples/images/testscreen-large.jpg" alt="TestImage" style="width: 100%; max-width: 600px;">
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px 20px 20px 20px; font-family:sans-serif; background-color: #eee; width: 100%; max-width: 560px;">
+                    <h1 style="margin: 0 0 10px; text-align: left; font-family:Georgia, serif;">Student Alumni Association</h1>
+                    <p style="text-align: left;"><b>Purpose:</b> Create lifelong aggies. Focuses on donors and guest speakers. Engage alumni. Plan & execute initiatives to connect students with alumni. Also, True Aggie Night, Miss USU, and A-Day.</p>
+                    <p style="text-align: left; margin: 0 0 10px;"><b>Application Link:</b></p>
+                </td>
+            </tr>
             """],
 
         "serve": ["""
@@ -137,9 +255,21 @@ def emailUser(info):
             Application Link:
             """,
                   """
-            <p><b>Service Center</b><br>
-                <b>Purpose:</b> Some of the programs run out of the center are SNAC, gleaning, best buddies, Special Olympics, Athletics United, etc.<br>
-                <b>Application Link:</b> 
+            <tr>
+                <td aria-hidden="true" height="40" style="font-size: 0px; line-height: 0px;">&nbsp;</td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="http://labs.jensimmons.com/2016/examples/images/testscreen-large.jpg" alt="TestImage" style="width: 100%; max-width: 600px;">
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px 20px 20px 20px; font-family:sans-serif; background-color: #eee; width: 100%; max-width: 560px;">
+                    <h1 style="margin: 0 0 10px; text-align: left; font-family:Georgia, serif;">Service Center</h1>
+                    <p style="text-align: left;"><b>Purpose:</b> Some of the programs run out of the center are SNAC, gleaning, best buddies, Special Olympics, Athletics United, etc.</p>
+                    <p style="text-align: left; margin: 0 0 10px;"><b>Application Link:</b></p>
+                </td>
+            </tr>
             """],
 
         "states": ["""
@@ -148,9 +278,21 @@ def emailUser(info):
             Application Link:
             """,
                    """
-            <p><b>Statesman</b><br>
-                <b>Purpose:</b> Student news. Gives students an opportunity to write<br>
-                <b>Application Link:</b> 
+            <tr>
+                <td aria-hidden="true" height="40" style="font-size: 0px; line-height: 0px;">&nbsp;</td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="http://labs.jensimmons.com/2016/examples/images/testscreen-large.jpg" alt="TestImage" style="width: 100%; max-width: 600px;">
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px 20px 20px 20px; font-family:sans-serif; background-color: #eee; width: 100%; max-width: 560px;">
+                    <h1 style="margin: 0 0 10px; text-align: left; font-family:Georgia, serif;">Statesman</h1>
+                    <p style="text-align: left;"><b>Purpose:</b> Student news. Gives students an opportunity to write</p>
+                    <p style="text-align: left; margin: 0 0 10px;"><b>Application Link:</b></p>
+                </td>
+            </tr>
             """],
 
         "radio": ["""
@@ -159,9 +301,22 @@ def emailUser(info):
             Application Link:
             """,
                   """
-            <p><b>Aggie Radio</b><br>
-                <b>Purpose:</b> Spread awareness & excitement around USU athletics, plan events & initiatives that increases attendance at games, promotes HURD Premium, & focuses on supporting women’s sports<br>
-                <b>Application Link:</b> 
+            <tr>
+                <td aria-hidden="true" height="40" style="font-size: 0px; line-height: 0px;">&nbsp;</td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="http://labs.jensimmons.com/2016/examples/images/testscreen-large.jpg" alt="TestImage" style="width: 100%; max-width: 600px;">
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px 20px 20px 20px; font-family:sans-serif; background-color: #eee; width: 100%; max-width: 560px;">
+                    <h1 style="margin: 0 0 10px; text-align: left; font-family:Georgia, serif;">Aggie Radio</h1>
+                    <p style="text-align: left;"><b>Purpose:</b> Provides students with opportunities to DJ, create radio talk shows, podcasts, & plan/coordinate events (mainly concerts)</p>
+                    <p style="text-align: left; margin: 0 0 10px;"><b>Application Link:</b></p>
+                </td>
+            </tr>
+
             """],
 
         "blight": ["""
@@ -170,9 +325,21 @@ def emailUser(info):
             Application Link:
             """,
                    """
-            <p><b>Blue Light</b><br>
-                <b>Purpose:</b> Meet content creation needs for clients, primarily USUSA<br>
-                <b>Application Link:</b> 
+            <tr>
+                <td aria-hidden="true" height="40" style="font-size: 0px; line-height: 0px;">&nbsp;</td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="http://labs.jensimmons.com/2016/examples/images/testscreen-large.jpg" alt="TestImage" style="width: 100%; max-width: 600px;">
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px 20px 20px 20px; font-family:sans-serif; background-color: #eee; width: 100%; max-width: 560px;">
+                    <h1 style="margin: 0 0 10px; text-align: left; font-family:Georgia, serif;">Blue Light</h1>
+                    <p style="text-align: left;"><b>Purpose:</b> Meet content creation needs for clients, primarily USUSA</p>
+                    <p style="text-align: left; margin: 0 0 10px;"><b>Application Link:</b></p>
+                </td>
+            </tr>
             """],
 
         "fsl": ["""
@@ -181,20 +348,56 @@ def emailUser(info):
             Application Link:
             """,
                 """
-            <p><b>Fraternity & Sorority Life</b><br>
-                <b>Purpose:</b> Advance personal development through community service, philanthropic fundraising, & activities.<br>
-                <b>Application Link:</b> 
+            <tr>
+                <td aria-hidden="true" height="40" style="font-size: 0px; line-height: 0px;">&nbsp;</td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="http://labs.jensimmons.com/2016/examples/images/testscreen-large.jpg" alt="TestImage" style="width: 100%; max-width: 600px;">
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px 20px 20px 20px; font-family:sans-serif; background-color: #eee; width: 100%; max-width: 560px;">
+                    <h1 style="margin: 0 0 10px; text-align: left; font-family:Georgia, serif;">Fraternity & Sorority Life</h1>
+                    <p style="text-align: left;"><b>Purpose:</b> Advance personal development through community service, philanthropic fundraising, & activities.</p>
+                    <p style="text-align: left; margin: 0 0 10px;"><b>Application Link:</b></p>
+                </td>
+            </tr> 
             """]
     }
     councils = {
-        1: ["", "<b>Arts Application: </b> <a href=""></a><br>"],
-        2: ["", "<b>Agriculture Application: </b><a href=""></a><br>"],
-        3: ["", "<b>Engineering Application: </b><a href=""></a><br>"],
-        4: ["", "<b>Humanities & Social Sciences Application: </b><a href=""></a><br>"],
-        5: ["", "<b>Science Application: </b><a href=""></a><br>"],
-        6: ["", "<b>Education Application: </b><a href=""></a><br>"],
-        7: ["", "<b>Huntsman Application: </b><a href=""></a><br>"],
-        8: ["", "<b>Natural Resources Application: </b><a href=""></a><br>"],
+        1: ["", """<p style="text-align: left; margin: 0 0 10px;"><b>Arts Application: </b><a href="></a></p>
+                </td>
+            </tr>
+            """],
+        2: ["", """<p style="text-align: left; margin: 0 0 10px;"><b>Agriculture Application: </b><a href="></a></p>
+                </td>
+            </tr>
+            """],
+        3: ["", """<p style="text-align: left; margin: 0 0 10px;"><b>Engineering Application: </b><a href="></a></p>
+                </td>
+            </tr>
+            """],
+        4: ["", """<p style="text-align: left; margin: 0 0 10px;"><b>Humanities & Social Sciences Application: </b><a href="></a></p>
+                </td>
+            </tr>
+            """],
+        5: ["", """<p style="text-align: left; margin: 0 0 10px;"><b>Science Application: </b><a href="></a></p>
+                </td>
+            </tr>
+            """],
+        6: ["", """<p style="text-align: left; margin: 0 0 10px;"><b>Education Application: </b><a href="></a></p>
+                </td>
+            </tr>
+            """],
+        7: ["", """<p style="text-align: left; margin: 0 0 10px;"><b>Huntsman Application: </b><a href="></a></p>
+                </td>
+            </tr>
+            """],
+        8: ["", """<p style="text-align: left; margin: 0 0 10px;"><b>Natural Resources Application: </b><a href="></a></p>
+                </td>
+            </tr>
+            """],
     }
 
     # Compile Message
@@ -211,25 +414,26 @@ def emailUser(info):
     html = """\
         <!DOCTYPE html>
         <html>
-	        <head>
-		        <style type="text/css" media="screen">
-			        img {
+            <head>
+                <style type="text/css" media="screen">
+                    img {
                         display: block;
                         margin-left: auto;
                         margin-right: auto;
-                        max-width: 100%;
+                        width: 100%;
+                        max-width: 900px;
                         height:  auto;
                         object-fit: contain;
                         align-content: center;
                     }
                     h1{
-                        font-family:garamond;
+                        font-family:sans-serif;
                         text-align: center;
                     }
                     p{
-                        font-family:sans-serif;
+                        font-family: Georgia, serif;
                         text-align: center;
-                        font-size: 16pt;
+                        font-size: 12pt;
                     }
                     table{
                         background-color: #0F2439;
@@ -238,6 +442,15 @@ def emailUser(info):
                         table-layout: fixed;
                         margin: 0;
                     }
+                    td{
+                        display: block;
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+                    ol{
+                        font-family: Georgia, serif;
+                        font-size: 12pt;
+                    }
                 </style>
             </head>
             <body>
@@ -245,14 +458,11 @@ def emailUser(info):
                     <img src="https://www.usu.edu/admissions/images/USU_Get_Involved.jpg" alt="Students playing pool">
                 </div>
                 <div style="background-color:#eee; padding:8px; word-wrap: break-word;">
-                    <h1>"The only way you can taste life is with involvement.” - <em>Sadhguru</em></h1>
-                    <p style="font-family:garamond";>Thank you for filling out our survey. You are a great match for the following three committees. Our goal here at USU is to cultivate an environment of development and growth and we need your help. Every single student can make a difference in our community and help others feel welcomed and heard, and it starts with involvement. Check out the options listed below or browse for other opportunities listed on <a href="https://www.usu.edu/involvement/"?>our website</a>. <br>We can’t wait to hear your perspectives and ideas and together change our school for the better. </p>
+                    <h1 style="font-family:garamond; text-align:center;">"The only way you can taste life is with involvement.” - <em>Sadhguru</em></h1>
+                    <p style="font-family:garamond; font-size: 16pt;">Thank you for filling out our survey. You are a great match for the following three committees. Our goal here at USU is to cultivate an environment of development and growth and we need your help. Every single student can make a difference in our community and help others feel welcomed and heard, and it starts with involvement. Check out the options listed below or browse for other opportunities listed on <a href="https://www.usu.edu/involvement/"?>our website</a>. <br>We can’t wait to hear your perspectives and ideas and together change our school for the better. </p>
                 </div>
                 <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                     <tbody>
-                        <tr>
-                            <td aria-hidden="true" height="40" style="font-size: 0px; line-height: 0px;">&nbsp;</td>
-                        </tr>
         """
     for x in range(3):
         text += orgs[info[x+1]][0]
@@ -264,6 +474,9 @@ def emailUser(info):
                 html += councils[x][1]
                 x += 1
     html += """
+                        <tr>
+                            <td aria-hidden="true" height="40" style="font-size: 0px; line-height: 0px;">&nbsp;</td>
+                        </tr>
                     </tbody>
                 </table>
             </body>
