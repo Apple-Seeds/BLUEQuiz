@@ -224,7 +224,7 @@ def emailUser(info):
                 <td style="padding: 10px 20px 20px 20px; font-family:sans-serif; background-color: #eee; width: 100%; max-width: 560px;">
                     <h1 style="margin: 0 0 10px; text-align: left; font-family:Georgia, serif;">College Councils</h1>
                     <p style="text-align: left;"><b>Purpose:</b> Advocate for student interests to their college’s administration (deans & department heads), plan & execute service projects & college specific events. Each college has its own week filled with events.</p>
-            """],
+        """],
 
         "saa": ["""
             Student Alumni Association
@@ -366,38 +366,22 @@ def emailUser(info):
             """]
     }
     councils = {
-        1: ["", """<p style="text-align: left; margin: 0 0 10px;"><b>Arts Application: </b><a href="></a></p>
-                </td>
-            </tr>
-            """],
-        2: ["", """<p style="text-align: left; margin: 0 0 10px;"><b>Agriculture Application: </b><a href="></a></p>
-                </td>
-            </tr>
-            """],
-        3: ["", """<p style="text-align: left; margin: 0 0 10px;"><b>Engineering Application: </b><a href="></a></p>
-                </td>
-            </tr>
-            """],
-        4: ["", """<p style="text-align: left; margin: 0 0 10px;"><b>Humanities & Social Sciences Application: </b><a href="></a></p>
-                </td>
-            </tr>
-            """],
-        5: ["", """<p style="text-align: left; margin: 0 0 10px;"><b>Science Application: </b><a href="></a></p>
-                </td>
-            </tr>
-            """],
-        6: ["", """<p style="text-align: left; margin: 0 0 10px;"><b>Education Application: </b><a href="></a></p>
-                </td>
-            </tr>
-            """],
-        7: ["", """<p style="text-align: left; margin: 0 0 10px;"><b>Huntsman Application: </b><a href="></a></p>
-                </td>
-            </tr>
-            """],
-        8: ["", """<p style="text-align: left; margin: 0 0 10px;"><b>Natural Resources Application: </b><a href="></a></p>
-                </td>
-            </tr>
-            """],
+        1: ["", """<p style="text-align: left; margin: 0 0 10px;"><b>Arts Application: </b><a href=""></a></p>
+        """],
+        2: ["", """<p style="text-align: left; margin: 0 0 10px;"><b>Agriculture Application: </b><a href=""></a></p>
+        """],
+        3: ["", """<p style="text-align: left; margin: 0 0 10px;"><b>Engineering Application: </b><a href=""></a></p>
+        """],
+        4: ["", """<p style="text-align: left; margin: 0 0 10px;"><b>Humanities & Social Sciences Application: </b><a href=""></a></p>
+        """],
+        5: ["", """<p style="text-align: left; margin: 0 0 10px;"><b>Science Application: </b><a href=""></a></p>
+        """],
+        6: ["", """<p style="text-align: left; margin: 0 0 10px;"><b>Education Application: </b><a href=""></a></p>
+        """],
+        7: ["", """<p style="text-align: left; margin: 0 0 10px;"><b>Huntsman Application: </b><a href=""></a></p>
+        """],
+        8: ["", """<p style="text-align: left; margin: 0 0 10px;"><b>Natural Resources Application: </b><a href=""></a></p>
+        """],
     }
 
     # Compile Message
@@ -469,10 +453,13 @@ def emailUser(info):
         html += orgs[info[x+1]][1]
         if info[x+1] == "council":
             x = 4
-            while x <= len(info):
-                text += councils[x][0]
-                html += councils[x][1]
+            while x < len(info):
+                text += councils[info[x]][0]
+                html += councils[info[x]][1]
                 x += 1
+            html += """
+                </td>
+            </tr>"""
     html += """
                         <tr>
                             <td aria-hidden="true" height="40" style="font-size: 0px; line-height: 0px;">&nbsp;</td>
@@ -602,9 +589,9 @@ def allocator(data):
     elif data[9] == 6:
         attributes["extroverted"] += 3
     # Q10: --------------------------------
-    attributes["planner"] += 3
-    attributes["project"] += 3
-    attributes["detail"] += 3
+    attributes["planner"] += data[10]
+    attributes["project"] += data[10]
+    attributes["detail"] += data[10]
 
     # Processing
     ''' If future organizations are added, add the lines here. Add them to the dictionary as well. '''
@@ -675,4 +662,4 @@ if __name__ == '__main__':
     fileObj = open(filepath)
     lineProcessor(fileObj)
     fileObj.close()
-    # os.remove(filepath)
+    os.remove(filepath)

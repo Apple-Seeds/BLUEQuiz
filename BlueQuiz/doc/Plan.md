@@ -646,6 +646,15 @@ And that's it! That's the program, ideally. Again, subject to change as I actual
 
 
 ## Implementation 
+Implementation actually went pretty dang well all things considered! There were a few small syntax errors here and there and a few small changes to be made, but all in all it actually ran really smoothly once I figured out how to get things running with the email function. The biggest challenges that came up with the initial implementation were:
 
+1. When I organized the dictionary to find the top three committees, at the last second I changed it from `orgs.items` to `orgs.keys` thinking that was the correct way to go about it. Definitely wasn't. So I fixed that. I also had some trouble at the beginning because it tried sending the email to 'hurd', but that was just because I put a 1 instead of a 0 for the index for the important info.
+2. I forgot to actually add the code that attached the committees to the email. That was a problem.
+3. The emails looked like hot garbage.
+
+But I got all those fixed pretty quickly. Really, most my time with this program past the design phase was just getting the emails to look nice. I based them off of the weekly newsletter USU sends out, and so while they're not perfect I think they look pretty nice. They're missing the links and the images still, but that's nothing I can't fix whenever I get those from the others.
+
+With all of that, the program is, as of August 14th, as done as it *can* be at the moment. I still don't have a housing, I still don't have a proper email to send from, I still don't have a finished survey, I still don't have the application links, and I don't have the pictures to go with each committee. Everything should be really easy to implement within the program when the time comes, but at the moment it's done! The only thing I have left I really want to do is clean up some of the clutter. For example, I realized I just copy/pasted the HTML for the committees, and I think I can come up with a much more efficient way to do that. My next commit will hopefully have that version, but I'm putting this up now so I can have something to fall back on in case I really screw things up. I'll add an update when that's done about how that went. I'll update all the stuff in this as well when that comes around.
 
 ## Testing
+Testing was done using a CSV file I manually exported. I've just been using that over and over to run the program and ensure the emails worked. The emails were just sent from and to my college email, and that's worked very nicely! Once the program is fully done, I'm going to have the rest of PCab use it just to ensure there's no issues. I've also been brainstorming any ways the user could screw this up, but thankfully since it's a multiple choice quiz there isn't very many. The only way I'd found thus far is that selecting multiple colleges could be screwy with the CSV file, but I fixed that with what might not be the most *elegant* solution, but it worked nonetheless. :)
