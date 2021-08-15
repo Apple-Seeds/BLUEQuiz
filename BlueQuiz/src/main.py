@@ -376,8 +376,7 @@ def allocator(data):
     orgs["series"] = (attributes["extroverted"] + attributes["creative"] + attributes["music"])
     orgs["trad"] = (attributes["helpful"] + attributes["planner"] + attributes["extroverted"] + attributes["spirit"])
     orgs["hurd"] = (attributes["hype"] + attributes["extroverted"] + attributes["athletic"])
-    if data[1] < 9:
-        orgs["council"] = (attributes["service"] + attributes["planner"] + attributes["academic"] + 2)
+    orgs["council"] = (attributes["service"] + attributes["planner"] + attributes["academic"] + 2)
     orgs["saa"] = (attributes["helpful"] + attributes["extroverted"] + attributes["spirit"])
     orgs["serve"] = (attributes["service"] + attributes["helpful"] + attributes["mentor"])
     orgs["states"] = (attributes["creative"] + attributes["mentor"])
