@@ -420,9 +420,9 @@ def lineProcessor(file):
 
 
 def getFile():
-    """ This function locates the CSV file with 'BRQ' in it, and pulls from that. """
+    """ This function locates the CSV file with 'BQR' in it, and pulls from that. """
     try:
-        path = glob.glob('../**/BRQ*')[0]  # Takes the first file with 'BRQ' in the directory.
+        path = glob.glob('../**/BQR*')[0]  # Takes the first file with 'BQR' in the directory.
     except IndexError:
         sys.exit(1)
     return path
