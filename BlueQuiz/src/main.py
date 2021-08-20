@@ -455,7 +455,7 @@ def allocator(data):
     orgs["series"] += (attributes["extroverted"] + attributes["creative"] + attributes["music"])
     orgs["trad"] += (attributes["helpful"] + attributes["planner"] + attributes["extroverted"] + attributes["spirit"])
     orgs["hurd"] += (attributes["hype"] + attributes["extroverted"] + attributes["athletic"])
-    orgs["council"] += (attributes["service"] + attributes["planner"] + attributes["academic"] + 2) # Bump if they know
+    orgs["council"] += (attributes["service"] + attributes["planner"] + attributes["academic"] + len(colleges)) # Bump if they know
     orgs["saa"] += (attributes["helpful"] + attributes["extroverted"] + attributes["spirit"])
     orgs["serve"] += (attributes["service"] + attributes["helpful"] + attributes["mentor"] + 2) # Bump due to less q's
     orgs["states"] += (attributes["creative"] + attributes["mentor"])
@@ -467,7 +467,7 @@ def allocator(data):
     impInfo = [data[0]]
     orgsList = sorted(orgs.items(), key=lambda k: k[1], reverse=True)
     for x in range(3):
-        if orgsList[x][0] == "council" and (9 or 10 in colleges):
+        if orgsList[x][0] == "council" and ((9 or 10) in colleges):
             orgsList.pop(x)
         impInfo.append(orgsList[x][0])
     if data[1] < 9:
