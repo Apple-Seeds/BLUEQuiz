@@ -8,81 +8,97 @@ from email.mime.multipart import MIMEMultipart
 def emailUser(info):
     """ This function handles the email that sends the top three organizations """
     # Setup
-    sender = ""  # Undetermined as of yet
+    sender = "bluequizinvolvement@gmail.com"  # Undetermined as of yet
     receiver = info[0]
     password = ""  # Undetermined as of yet
     message = MIMEMultipart("alternative")
     orgs = {
-        "pcab": ["http://labs.jensimmons.com/2016/examples/images/testscreen-large.jpg",
+        "pcab": ["https://usustatesman.com/wp-content/uploads/2021/04/webp.net-resizeimage-19.jpg",
                  "President's Cabinet",
                  "Work on initiatives set by the USUSA President. It’s function/form is different from year-to-year, but for our purposes PCab is focused on:",
-                 ""],
-        "fees": ["http://labs.jensimmons.com/2016/examples/images/testscreen-large.jpg",
+                 "Application Link: ",
+                 "https://usu.co1.qualtrics.com/jfe/form/SV_0vssECtz4E3oGii"],
+        "fees": ["https://usustatesman.com/wp-content/uploads/2021/01/webp.net-resizeimage-8-1050x709.jpg",
                  "Student Fee Board",
-                 "Advisory board to the University President to decide on student fees. Receives presentations, discusses, reviews, & votes on whether or not to recommend a change in student fees.",
-                 ""],
-        "grc": ["http://labs.jensimmons.com/2016/examples/images/testscreen-large.jpg",
+                 "Advisory board to the University President and chaired by the USUSA Executive VP. Decides on student fees. Receives presentations, discusses, reviews, & votes on whether or not to recommend a change in student fees. Applications usually open up towards the end of September.",
+                 "Website: ",
+                 "https://www.usu.edu/student-affairs/student-fees"],
+        "grc": ["https://usustatesman.com/wp-content/uploads/2014/09/GRC_VoterRegistration.jpg",
                 "Government Relations Council (GRC)",
                 "Advocate for student interest to state & local officials & raise awareness of civic issues on campus. Plans Gripe Night, Voter Registration, & Aggie Ice Cream Day on the Hill",
-                ""],
-        "blucru": ["http://labs.jensimmons.com/2016/examples/images/testscreen-large.jpg",
+                "Application Link: ",
+                "https://usu.co1.qualtrics.com/jfe/form/SV_6AtXnSBck14zsDs"],
+        "blucru": ["https://usustatesman.com/wp-content/uploads/2015/12/IMG_6393.jpg",
                    "Blue Crew",
                    "Assist in the marketing of events & helps set up/take down for events",
-                   ""],
-        "activity": ["http://labs.jensimmons.com/2016/examples/images/testscreen-large.jpg",
+                   "Application Link: ",
+                   "https://usu.co1.qualtrics.com/jfe/form/SV_dh6MakKgwh0WKtU"],
+        "activity": ["https://usustatesman.com/wp-content/uploads/2018/10/mh-howl-2016-7-1-1050x500.jpg",
                      "Activities Committee",
                      "Plans & executes The Howl, Mardi Gras, & End of Year Bash",
-                     ""],
-        "series": ["http://labs.jensimmons.com/2016/examples/images/testscreen-large.jpg",
+                     "Application Link: ",
+                     "https://usu.co1.qualtrics.com/jfe/form/SV_5tnDz4KcQkIMUTk"],
+        "series": ["https://usustatesman.com/wp-content/uploads/2015/10/TM_Pobev.jpg",
                    "Series Committee",
-                   "Plans & executes regular/recurring events that are generally more artistic like PoBev & Moonlight & Music",
-                   ""],
-        "trad": ["http://labs.jensimmons.com/2016/examples/images/testscreen-large.jpg",
+                   "Plans & executes regular/recurring events that are generally more artistic like PoBev and Moonlight & Music",
+                   "Application Link: ",
+                   "https://usu.co1.qualtrics.com/jfe/form/SV_5tnDz4KcQkIMUTk"],
+        "trad": ["https://usustatesman.com/wp-content/uploads/2020/09/img_9338-1-1050x700.jpg",
                  "Traditions Committee",
                  "Plans & executes Homecoming week, Mr.USU, Sweater Swap, & High Stakes Bingo",
-                 ""],
-        "hurd": ["http://labs.jensimmons.com/2016/examples/images/testscreen-large.jpg",
+                 "Application Link: ",
+                 "https://usu.co1.qualtrics.com/jfe/form/SV_5tnDz4KcQkIMUTk"],
+        "hurd": ["https://usustatesman.com/wp-content/uploads/2017/10/usuvsunr05-1-1050x700.jpg",
                  "HURD Committee",
                  "Spread awareness & excitement around USU athletics, plan events & initiatives that increases attendance at games, promotes HURD Premium, & focuses on supporting women’s sports",
-                 ""],
-        "council": ["http://labs.jensimmons.com/2016/examples/images/testscreen-large.jpg",
+                 "Application Link: ",
+                 "https://usu.co1.qualtrics.com/jfe/form/SV_cSAGzZBiW4065xQ"],
+        "council": ["https://usustatesman.com/wp-content/uploads/2019/01/20190109_feeboardmeeting_rimando2-1050x700.jpg",
                     "College Councils",
                     "Advocate for student interests to their college’s administration (deans & department heads), plan & execute service projects & college specific events. Each college has its own week filled with events.",
-                    ""],
-        "saa": ["http://labs.jensimmons.com/2016/examples/images/testscreen-large.jpg",
+                    ],
+        "saa": ["https://usustatesman.com/wp-content/uploads/2015/10/KT.SAAnetworking.10.8.03.jpg",
                 "Student Alumni Association",
                 "Create lifelong aggies. Focuses on donors and guest speakers. Engage alumni. Plan & execute initiatives to connect students with alumni. Also, True Aggie Night, Miss USU, and A-Day.",
-                ""],
-        "serve": ["http://labs.jensimmons.com/2016/examples/images/testscreen-large.jpg",
+                "Website: ",
+                "https://www.usu.edu/alumni/"],
+        "serve": ["https://usustatesman.com/wp-content/uploads/2021/02/snac.jpg",
                   "Service Center Programs",
                   "Some of the programs run out of the center are SNAC, gleaning, best buddies, Special Olympics, Athletics United, etc.",
-                  ""],
-        "states": ["http://labs.jensimmons.com/2016/examples/images/testscreen-large.jpg",
+                  "Website: ",
+                  "https://www.usu.edu/servicecenter/index"],
+        "states": ["https://i.ibb.co/2vhVDVJ/states.png",
                    "Statesman",
                    "Student news. Gives students an opportunity to write",
-                   ""],
-        "radio": ["http://labs.jensimmons.com/2016/examples/images/testscreen-large.jpg",
+                   "Application Link: ",
+                   "https://docs.google.com/forms/d/e/1FAIpQLSea_u0ACnO9fcVxBlN19upb2QVO2Qmg2YLPl9SibU6p2q-CgA/viewform"],
+        "radio": ["https://usustatesman.com/wp-content/uploads/2013/10/2840326-2159898677.jpg",
                   "Aggie Radio",
                   "Provides students with opportunities to DJ, create radio talk shows, podcasts, & plan/coordinate events (mainly concerts)",
-                  ""],
-        "blight": ["http://labs.jensimmons.com/2016/examples/images/testscreen-large.jpg",
+                  "Application Link: ",
+                  "https://docs.google.com/forms/d/e/1FAIpQLSea_u0ACnO9fcVxBlN19upb2QVO2Qmg2YLPl9SibU6p2q-CgA/viewform"],
+        "blight": ["https://i.ibb.co/mTnCpwH/blight.png",
                    "Blue Light",
                    "Meet content creation needs for clients, primarily USUSA",
-                   ""],
-        "fsl": ["http://labs.jensimmons.com/2016/examples/images/testscreen-large.jpg",
+                   "Application Link: ",
+                   "https://docs.google.com/forms/d/e/1FAIpQLSea_u0ACnO9fcVxBlN19upb2QVO2Qmg2YLPl9SibU6p2q-CgA/viewform"],
+        "fsl": ["https://i.ibb.co/xgrX0Lm/fsl.jpg",
                 "Fraternity & Sorority Life",
                 "Advance personal development through community service, philanthropic fundraising, & activities.",
-                ""]
+                "Sorority Link: ",
+                "Fraternity Link: ",
+                "https://www.usu.edu/involvement/fsl/sorority-recruitment",
+                "https://docs.google.com/forms/d/e/1FAIpQLSfoAJLxRYokCNgDpJ-0A4pCIZv7ZLM3bF2Ng8CiYMwRHJrERQ/viewform?usp=send_form"]
     }
     councils = {
-        1: ["Arts Application:", ""],
-        2: ["Agriculture Application:", ""],
-        3: ["Engineering Application:", ""],
-        4: ["Humanities & Social Sciences Application:", ""],
-        5: ["Science Application:", ""],
-        6: ["Education Application:", ""],
-        7: ["Huntsman Application:", ""],
-        8: ["Natural Resources Application:", ""],
+        1: ["Arts Contact:", "mailto:", "ccasenator.ususa@usu.edu"],
+        2: ["Agriculture Contact:", "mailto:", "caassenator.ususa@usu.edu"],
+        3: ["Engineering Application:", "mailto:", "engrsenator.ususa@usu.edu"],
+        4: ["Humanities & Social Sciences Application:", "", "https://usu.co1.qualtrics.com/jfe/form/SV_9mh79aPEaFUpE9M"],
+        5: ["Science Application:", "", "https://usu.co1.qualtrics.com/jfe/form/SV_9vLBETERRRrJmKy"],
+        6: ["Education Application:", "", "https://docs.google.com/forms/d/e/1FAIpQLSdM7-KZXgiu4FgrfTT5OuJiT3oHrpQPPCfiu4m02muxdn1Psw/viewform"],
+        7: ["Huntsman Contact:", "mailto:" ,"huntsmansenator.ususa@usu.edu"],
+        8: ["Natural Resources Application:", "", "https://usu.co1.qualtrics.com/jfe/form/SV_9mh79aPEaFUpE9M"],
     }
 
     # Compile Message
@@ -171,8 +187,8 @@ def emailUser(info):
             '''
             x = 4
             while x < len(info):
-                text += councils[info[x]][0] + ": " + councils[info[x]][1] + "\n"
-                html += '''<p style="text-align: left; margin: 0 0 10px;"><b>''' + councils[info[x]][0] + '''</b><a href="''' + councils[info[x]][1] + '''"> ''' + councils[info[x]][1] + '''</a></p>'''
+                text += councils[info[x]][0] + ": " + councils[info[x]][2] + "\n"
+                html += '''<p style="text-align: left; margin: 0 0 10px;"><b>''' + councils[info[x]][0] + '''</b><a href="''' + councils[info[x]][1] + councils[info[x]][2] + '''"> ''' + councils[info[x]][2] + '''</a></p>'''
                 x += 1
             html += """
                            </td>
@@ -185,7 +201,7 @@ def emailUser(info):
             \t 2. Increasing access to involvement opportunities
             \t 3. Amplifying student voices
             \t 4. Promoting & fundraising for scholarship opportunities that incentivize service & leadership.
-            Application Link: """ + orgs[info[x+1]][3] + """
+            """ + orgs[info[x+1]][3] + orgs[info[x+1]][4] + """
             """
             html += '''
             <tr>
@@ -206,7 +222,32 @@ def emailUser(info):
                         <li>Amplifying student voices</li>
                         <li>Promoting & fundraising for scholarship opportunities that incentivize service & leadership.</li>
                     </ol>
-                    <p style="text-align: left; margin: 0 0 10px;"><b>Application Link: </b>''' + orgs[info[x+1]][3] + '''</p>
+                    <p style="text-align: left; margin: 0 0 10px;"><b>''' + orgs[info[x+1]][3] + '''</b><a href="''' + orgs[info[x+1]][4] + '''">''' + orgs[info[x+1]][4] + '''</a></p>
+                </td>
+            </tr> 
+            '''
+        elif info[x+1] == "fsl":
+            text += """
+            """ + orgs[info[x+1]][1] + """
+                Purpose: """ + orgs[info[x+1]][2] + """
+                """ + orgs[info[x+1]][3] + orgs[info[x+1]][5] + """
+                """ + orgs[info[x+1]][4] + orgs[info[x+1]][6] + """
+            """
+            html += '''
+            <tr>
+                <td aria-hidden="true" height="40" style="font-size: 0px; line-height: 0px;">&nbsp;</td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="''' + orgs[info[x+1]][0] + '''" alt="TestImage" style="width: 100%; max-width: 600px;">
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px 20px 20px 20px; font-family:sans-serif; background-color: #eee; width: 100%; max-width: 560px;">
+                    <h1 style="margin: 0 0 10px; text-align: left; font-family:Georgia, serif;">''' + orgs[info[x+1]][1] + '''</h1>
+                    <p style="text-align: left;"><b>Purpose: </b>''' + orgs[info[x+1]][2] + '''</p>
+                    <p style="text-align: left; margin: 0 0 10px;"><b>''' + orgs[info[x+1]][3] + '''</b><a href="''' + orgs[info[x+1]][5] + '''">''' + orgs[info[x+1]][5] + '''</a></p>
+                    <p style="text-align: left; margin: 0 0 10px;"><b>''' + orgs[info[x+1]][4] + '''</b><a href="''' + orgs[info[x+1]][6] + '''">''' + orgs[info[x+1]][6] + '''</a></p>
                 </td>
             </tr> 
             '''
@@ -214,7 +255,7 @@ def emailUser(info):
             text += """
                 """ + orgs[info[x+1]][1] + """
                 Purpose: """ + orgs[info[x+1]][2] + """
-                Application Link: """ + orgs[info[x+1]][3] + """
+                """ + orgs[info[x+1]][3] + orgs[info[x+1]][4] + """
                 """
             html += '''
                 <tr>
@@ -229,7 +270,7 @@ def emailUser(info):
                     <td style="padding: 10px 20px 20px 20px; font-family:sans-serif; background-color: #eee; width: 100%; max-width: 560px;">
                         <h1 style="margin: 0 0 10px; text-align: left; font-family:Georgia, serif;">''' + orgs[info[x+1]][1] + '''</h1>
                         <p style="text-align: left;"><b>Purpose: </b>''' + orgs[info[x+1]][2] + '''</p>
-                        <p style="text-align: left; margin: 0 0 10px;"><b>Application Link: </b>''' + orgs[info[x+1]][3] + '''</p>
+                        <p style="text-align: left; margin: 0 0 10px;"><b>''' + orgs[info[x+1]][3] + '''</b><a href="''' + orgs[info[x+1]][4] + '''">''' + orgs[info[x+1]][4] + '''</a></p>
                     </td>
                 </tr> 
                 '''
@@ -301,7 +342,7 @@ def allocator(data):
     # Council Formatting
     '''The college major question (Q1) allows multiple choices, and that heavily screws up the indexes. This is to 
     remedy that. '''
-    questions = 12  # Change for the set amount of questions there should be for the quiz.
+    questions = 11  # Change for the set amount of questions there should be for the quiz.
     diff = len(data) - questions
     colleges = []
     if diff > 0:
@@ -310,79 +351,117 @@ def allocator(data):
     colleges.append(data[1])
 
     # Point Allocation
-    ''' If future questions are added, just add the lines here '''
+    # Q2: --------------------------------
+    if data[2] != -99:
+        attributes["project"] += data[2]
+        attributes["detail"] += data[2]
+        attributes["planner"] += data[2]
     # Q3: --------------------------------
-    attributes["project"] += data[3]
-    attributes["detail"] += data[3]
+    if data[3] != -99:
+        attributes["political"] += data[3]
+        orgs["states"] += 2
     # Q4: --------------------------------
-    attributes["political"] += data[4]
+    if data[4] == 1:
+        attributes["hype"] += 5
+        attributes["party"] += 4
+        attributes["athletic"] += 4
+        attributes["spirit"] += 3
+    elif data[4] == 2:
+        attributes["time"] += 2
+        attributes["mentor"] += 2
+        attributes["extroverted"] -= 1
     # Q5: --------------------------------
-    if data[5] == 1:
-        attributes["hype"] += data[5]
-        attributes["party"] += data[5]
-        attributes["athletic"] += data[5]
+    if data[5] != -99:
+        attributes["helpful"] += data[5]
+        attributes["academic"] += data[5]
+        attributes["detail"] += data[5]
+        attributes["project"] += data[5]
     # Q6: --------------------------------
-    attributes["helpful"] += data[6]
-    attributes["academic"] += data[6]
-    attributes["detail"] += data[6]
-    attributes["project"] += data[6]
-    # Q7: === to be added ===
-    # Q8: --------------------------------
-    if data[8] == 1:
+    if data[6] == 1:
         attributes["hype"] += 3
         attributes["athletic"] += 3
         attributes["spirit"] += 3
-    elif data[8] == 2:
+    elif data[6] == 2:
         attributes["creative"] += 3
-    elif data[8] == 3:
+        orgs["blight"] += 2
+    elif data[6] == 3:
         attributes["party"] += 3
         attributes["music"] += 3
         attributes["extroverted"] += 3
-    elif data[8] == 4:
+    elif data[6] == 4:
         attributes["academic"] += 3
         attributes["mentor"] += 3
-    # Q9: --------------------------------
-    if data[9] == 1:
-        # ===not sure what to add to here===
-        attributes["political"] += 1
-    elif data[9] == 2:
+    # Q7: --------------------------------
+    if data[7] == 1:
+        attributes["mentor"] += 3
+        attributes["extroverted"] += 3
+        attributes["leader"] += 3
+    elif data[7] == 2:
         attributes["helpful"] += 3
         attributes["spirit"] += 3
         attributes["service"] += 3
-    elif data[9] == 3:
-        attributes["mentor"] += 3
-        attributes["extroverted"] += 3
-        attributes["leader"] += 3
-    elif data[9] == 4:
-        attributes["political"] += 3
-        attributes["leader"] += 3
-    elif data[9] == 5:
+    elif data[7] == 3:
         attributes["detail"] += 3
         attributes["leader"] += 3
-    elif data[9] == 6:
+        attributes["project"] += 3
+        orgs["saa"] += 2
+    elif data[7] == 4:
+        attributes["political"] += 3
+        attributes["leader"] += 3
+        attributes["time"] += 2
+    elif data[7] == 5:
         attributes["extroverted"] += 3
+        attributes["leader"] += 3
+        attributes["service"] += 3
+    # Q8: --------------------------------
+    if data[8] != -99:
+        attributes["planner"] += data[8]
+        attributes["project"] += data[8]
+        attributes["detail"] += data[8]
+        attributes["time"] -= (data[8]-2)
+    # Q9: --------------------------------
+    if data[9] == 1:
+        attributes["academic"] += 3
+        attributes["planner"] += 3
+    if data[9] == 2:
+        attributes["athletic"] += 3
+        attributes["music"] += 2
+    if data[9] == 3:
+        attributes["spirit"] += 2
+        attributes["helpful"] += 2
+    if data[9] == 4:
+        attributes["athletic"] += 2
+        attributes["time"] += 2
+    if data[9] == 5:
+        attributes["music"] += 3
+        attributes["creative"] += 3
     # Q10: --------------------------------
-    attributes["planner"] += data[10]
-    attributes["project"] += data[10]
-    attributes["detail"] += data[10]
+    if data[10] == 1:
+        attributes["political"] += 3
+        attributes["academic"] += 3
+        attributes["planner"] += 3
+    elif data[10] == 2:
+        attributes["creative"] += 3
+        attributes["music"] += 3
+        attributes["hype"] += 3
 
     # Processing
     ''' If future organizations are added, add the lines here. Add them to the dictionary as well. '''
-    orgs["pcab"] = (attributes["leader"] + attributes["service"] + attributes["project"] + attributes["political"])
-    orgs["fees"] = (attributes["detail"] + attributes["time"])
-    orgs["grc"] = (attributes["political"] + attributes["academic"])
-    orgs["blucru"] = (attributes["service"] + attributes["hype"] + attributes["helpful"])
-    orgs["activity"] = (attributes["party"] + attributes["planner"] + attributes["extroverted"])
-    orgs["series"] = (attributes["extroverted"] + attributes["creative"] + attributes["music"])
-    orgs["trad"] = (attributes["helpful"] + attributes["planner"] + attributes["extroverted"] + attributes["spirit"])
-    orgs["hurd"] = (attributes["hype"] + attributes["extroverted"] + attributes["athletic"])
-    orgs["council"] = (attributes["service"] + attributes["planner"] + attributes["academic"] + 2)
-    orgs["saa"] = (attributes["helpful"] + attributes["extroverted"] + attributes["spirit"])
-    orgs["serve"] = (attributes["service"] + attributes["helpful"] + attributes["mentor"])
-    orgs["states"] = (attributes["creative"] + attributes["mentor"])
-    orgs["radio"] = (attributes["creative"] + attributes["music"])
-    orgs["blight"] = (attributes["detail"] + attributes["creative"])
-    orgs["fsl"] = (attributes["service"] + attributes["hype"] + attributes["party"])
+    orgs["pcab"] += (attributes["leader"] + attributes["service"] + attributes["project"] + attributes["political"])
+    orgs["fees"] += (attributes["detail"] + attributes["time"])
+    orgs["grc"] += (attributes["political"] + attributes["academic"])
+    orgs["blucru"] += (attributes["service"] + attributes["hype"] + attributes["helpful"])
+    orgs["activity"] += (attributes["party"] + attributes["planner"] + attributes["extroverted"])
+    orgs["series"] += (attributes["extroverted"] + attributes["creative"] + attributes["music"])
+    orgs["trad"] += (attributes["helpful"] + attributes["planner"] + attributes["extroverted"] + attributes["spirit"])
+    orgs["hurd"] += (attributes["hype"] + attributes["extroverted"] + attributes["athletic"])
+    orgs["council"] += (attributes["service"] + attributes["planner"] + attributes["academic"] + 2) # Bump if they know
+    orgs["saa"] += (attributes["helpful"] + attributes["extroverted"] + attributes["spirit"])
+    orgs["serve"] += (attributes["service"] + attributes["helpful"] + attributes["mentor"] + 2) # Bump due to less q's
+    orgs["states"] += (attributes["creative"] + attributes["mentor"])
+    orgs["radio"] += (attributes["creative"] + attributes["music"])
+    orgs["blight"] += (attributes["detail"] + attributes["creative"])
+    orgs["fsl"] += (attributes["service"] + attributes["hype"] + attributes["party"])
 
     # Reporting
     impInfo = [data[0]]
