@@ -338,19 +338,15 @@ def allocator(data):
         "fsl": 0
     }
     for x in range(len(data)):
-        if x > 0:
+        if x > 1:
             data[x] = int(data[x])
 
     # Council Formatting
-    '''The college major question (Q1) allows multiple choices, and that heavily screws up the indexes. This is to 
-    remedy that. '''
-    questions = 11  # Change for the set amount of questions there should be for the quiz.
-    diff = len(data) - questions
+    '''The college major question (Q1) allows multiple choices. As of v1.2.0 the way the CSV and program handles this
+    information has changed, and now works a little better.'''
     colleges = []
-    if diff > 0:
-        for x in range(diff):
-            colleges.append(data.pop(2))
-    colleges.append(data[1])
+    for x in range(10):
+        colleges.append(data.pop(2))
 
     # Point Allocation
     # Q2: --------------------------------
@@ -466,16 +462,17 @@ def allocator(data):
     orgs["fsl"] += (attributes["service"] + attributes["hype"] + attributes["party"])
 
     # Reporting
-    impInfo = [data[0]]
+    impInfo = [data[0], data[1]]
     orgsList = sorted(orgs.items(), key=lambda k: k[1], reverse=True)
     for x in range(3):
         if orgsList[x][0] == "council":
-            if 9 in colleges or 10 in colleges:
+            if colleges[8] == 1 or colleges[9] == 1:
                 orgsList.pop(x)
         impInfo.append(orgsList[x][0])
-    if data[1] < 9:
-        for el in colleges:
-            impInfo.append(el)
+    if "council" in impInfo:
+        for x in range(len(colleges)):
+            if colleges[x] == 1:
+                impInfo.append(x+1)
     return impInfo
 
 
@@ -488,13 +485,16 @@ def lineProcessor(file):
             ## Ripping
             quizResponses = []
             line = line.strip('\n')
-            line = line.replace('"', "")
             elementList = line.split(',')
             for el in range(len(elementList)):
-                if el >= 17:
+                if (11 <= el < 31) or el == 0:
                     quizResponses.append(elementList[el])
             ## Allocating
             importantInfo = allocator(quizResponses)
+            ## ID Logging
+            log = open('../data/response_id.txt', 'w')
+            log.write(importantInfo.pop(0))
+            log.close()
             ## Reporting
             emailUser(importantInfo)
         else:
@@ -504,7 +504,7 @@ def lineProcessor(file):
 def getFile():
     """ This function locates the CSV file with 'BQR' in it, and pulls from that. """
     try:
-        path = glob.glob('../**/BQR*')[0]  # Takes the first file with 'BQR' in the directory.
+        path = glob.glob('../data/Blue Quiz.csv')[0]
     except IndexError:
         print("No File Found")
         sys.exit(1)
