@@ -8,9 +8,9 @@ from email.mime.multipart import MIMEMultipart
 def emailUser(info):
     """ This function handles the email that sends the top three organizations """
     # Setup
-    sender = "bluequizinvolvement@gmail.com"  # Undetermined as of yet
+    sender = "bluequizinvolvement@gmail.com"
     receiver = info[0]
-    password = ""  # Undetermined as of yet
+    password = "wdB!PGbV*GhG&23y"
     message = MIMEMultipart("alternative")
     orgs = {
         "pcab": ["https://usustatesman.com/wp-content/uploads/2021/04/webp.net-resizeimage-19.jpg",
@@ -130,11 +130,13 @@ def emailUser(info):
                     h1{
                         font-family:sans-serif;
                         text-align: center;
+                        color:black;
                     }
                     p{
                         font-family: Georgia, serif;
                         text-align: center;
                         font-size: 12pt;
+                        color:black;
                     }
                     table{
                         background-color: #0F2439;
@@ -293,7 +295,7 @@ def emailUser(info):
     with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
         server.login(sender, password)
         server.sendmail(sender, receiver, message.as_string())
-        print("Email Sent!")
+        print("Email Sent to: " + receiver)
 
 
 def allocator(data):
@@ -436,7 +438,7 @@ def allocator(data):
         attributes["music"] += 3
         attributes["creative"] += 3
     # Q10: --------------------------------
-    if data[10] == 1:
+    if data[10] == 1 or data[10] == 3:
         attributes["political"] += 3
         attributes["academic"] += 3
         attributes["planner"] += 3
@@ -467,8 +469,9 @@ def allocator(data):
     impInfo = [data[0]]
     orgsList = sorted(orgs.items(), key=lambda k: k[1], reverse=True)
     for x in range(3):
-        if orgsList[x][0] == "council" and ((9 or 10) in colleges):
-            orgsList.pop(x)
+        if orgsList[x][0] == "council":
+            if 9 in colleges or 10 in colleges:
+                orgsList.pop(x)
         impInfo.append(orgsList[x][0])
     if data[1] < 9:
         for el in colleges:
@@ -503,6 +506,7 @@ def getFile():
     try:
         path = glob.glob('../**/BQR*')[0]  # Takes the first file with 'BQR' in the directory.
     except IndexError:
+        print("No File Found")
         sys.exit(1)
     return path
 
