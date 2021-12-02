@@ -3,14 +3,14 @@ import smtplib, ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
-def emailUser(sender, password, results):
+def emailUser(email, colleges, five, results):
+    """ This function handles the email that sends the top five clubs """
     # Compile Message
     # Beginning
-    receiver = info[0]
     message = MIMEMultipart("alternative")
-    message["Subject"] = "Blue Quiz Involvement Survey Results!"
-    message["From"] = sender
-    message["To"] = receiver
+    message["Subject"] = email['subject']
+    message["From"] = email['sender']
+    message["To"] = email['receiver']
     textFile = getFile('../data/result/text_intro.txt')
     htmlFile = getFile('../data/result/html_intro.txt')
     for line in textFile:
@@ -20,14 +20,112 @@ def emailUser(sender, password, results):
         html =+ line
     htmlFile.close()
     # Middle
-
+    for x in range(5):
+        if five[x+1] == "council":
+            text += """
+            """ + results[five[x+1]][1] + """
+                Purpose: """ + results[five[x+1]][2] + """
+            """
+            html += '''
+            <tr>
+                <td aria-hidden="true" height="40" style="font-size: 0px; line-height: 0px;">&nbsp;</td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="''' + results[five[x+1]][0] + '''" style="width: 100%; max-width: 600px;">
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px 20px 20px 20px; font-family:sans-serif; background-color: #eee; width: 100%; max-width: 560px;">
+                    <h1 style="margin: 0 0 10px; text-align: left; font-family:Georgia, serif;">''' + results[five[x+1]][1] + '''</h1>
+                    <p style="text-align: left;"><b>Purpose: </b>''' + results[five[x+1]][2] + '''</p>
+            '''
+            while colleges: # While there's still colleges in the list
+                curCol = colleges.pop(0)
+                text += results[five[x+1]][curCol * 3] + ": " + results[five[x+1]][(curCol * 3) + 2] + "\n"
+                html += '''<p style="text-align: left; margin: 0 0 10px;"><b>''' + results[five[x+1]][curCol * 3] + '''</b><a href="''' + results[five[x+1]][(curCol * 3) + 1] + results[five[x+1]][(curCol * 3) + 2] + '''"> ''' + results[five[x+1]][(curCol * 3) + 2] + '''</a></p>'''
+            html += """
+                           </td>
+                       </tr>"""
+        elif five[x+1] == "fsl":
+            text += """
+            """ + results[five[x+1]][1] + """
+                Purpose: """ + results[five[x+1]][2] + """
+                """ + results[five[x+1]][3] + results[five[x+1]][4] + """
+                """ + results[five[x+1]][5] + results[five[x+1]][6] + """
+            """
+            html += '''
+            <tr>
+                <td aria-hidden="true" height="40" style="font-size: 0px; line-height: 0px;">&nbsp;</td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="''' + results[five[x+1]][0] + '''" alt="TestImage" style="width: 100%; max-width: 600px;">
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10px 20px 20px 20px; font-family:sans-serif; background-color: #eee; width: 100%; max-width: 560px;">
+                    <h1 style="margin: 0 0 10px; text-align: left; font-family:Georgia, serif;">''' + results[five[x+1]][1] + '''</h1>
+                    <p style="text-align: left;"><b>Purpose: </b>''' + results[five[x+1]][2] + '''</p>
+                    <p style="text-align: left; margin: 0 0 10px;"><b>''' + results[five[x+1]][3] + '''</b><a href="''' + results[five[x+1]][4] + '''">''' + results[five[x+1]][4] + '''</a></p>
+                    <p style="text-align: left; margin: 0 0 10px;"><b>''' + results[five[x+1]][5] + '''</b><a href="''' + results[five[x+1]][6] + '''">''' + results[five[x+1]][6] + '''</a></p>
+                </td>
+            </tr> 
+            '''
+        else:
+            text += """
+                """ + results[five[x+1]][1] + """
+                Purpose: """ + results[five[x+1]][2] + """
+                """ + results[five[x+1]][3] + results[five[x+1]][4] + """
+                """
+            html += '''
+                <tr>
+                    <td aria-hidden="true" height="40" style="font-size: 0px; line-height: 0px;">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="''' + results[five[x+1]][0] + '''" style="width: 100%; max-width: 600px;">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px 20px 20px 20px; font-family:sans-serif; background-color: #eee; width: 100%; max-width: 560px;">
+                        <h1 style="margin: 0 0 10px; text-align: left; font-family:Georgia, serif;">''' + results[five[x+1]][1] + '''</h1>
+                        <p style="text-align: left;"><b>Purpose: </b>''' + results[five[x+1]][2] + '''</p>
+                        <p style="text-align: left; margin: 0 0 10px;"><b>''' + results[five[x+1]][3] + '''</b><a href="''' + results[five[x+1]][4] + '''">''' + results[five[x+1]][4] + '''</a></p>
+                    </td>
+                </tr> 
+                '''
+    # End
+    html += """
+                        <tr>
+                            <td aria-hidden="true" height="40" style="font-size: 0px; line-height: 0px;">&nbsp;</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </body>
+        </html>
+        """
+    pPart = MIMEText(text, "plain")
+    hPart = MIMEText(html, "html")
+    message.attach(pPart)
+    message.attach(hPart)
+    # Sendoff
+    context = ssl.create_default_context()
+    with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
+        server.login(email['sender'], email['password'])
+        server.sendmail(email['sender'], email['receiver'], message.as_string())
+        print("Email Sent to: " + email['receiver'])
 
 def pull(path, five):
+    """ This function opens a given CSV file and processes it into workable data. """
     info = {}
-    file = open('../data/clubdata/academic/general.csv')
+    file = open(path)
     for line in file:
         line = line.strip('\n')
-        lineData = line.split(',')
+        lineData = line.split('"""')
+        for el in range(len(lineData)):
+            if el != 2 and el != 3
+                lineData[el] = lineData[el].strip(',')
         if lineData[0] == five:
             lineData.pop(0)
             info[five] = lineData
@@ -36,6 +134,7 @@ def pull(path, five):
 
 
 def getResults(five):
+    """ This function takes the top five results and points the 'pull' function to the correct csv, returning a dictionary of important club info. """
     # Setup
     results = {}
     # Academic
@@ -102,8 +201,11 @@ def allocator(data):
 def lineProcessor(file):
     """ This function takes the data from the CSV file, rips out the necessary info, and sends it up for processing. """
     # Setup
-    email = "bluequizinvolvement@gmail.com"
-    password = "wdB!PGbV*GhG&23y"
+    email = {
+        'sender': "bluequizinvolvement@gmail.com",
+        'password': "wdB!PGbV*GhG&23y",
+        'subject': "Blue Quiz Involvement Survey Results!"
+    }
 
     # Processing
     skipHeadings = 0
@@ -124,13 +226,15 @@ def lineProcessor(file):
                     quizResponses[data] = int(quizResponses[data])
             # Allocating
             topFive = allocator(quizResponses)
+            email['receiver'] = topFive.pop(0) # Grab email from resulting list
+            colleges = topFive.pop(0) # Grab college list from resulting list
             # ID Logging
             log = open('../data/response_id.txt', 'w')
             log.write(importantInfo.pop(0))
             log.close()
             # Emailing
             results = getResults(topFive)
-            emailUser(email, password, results)
+            emailUser(email, colleges, topFive, results)
         else:
             skipHeadings += 1
 
@@ -140,7 +244,7 @@ def getFile(path):
     try:
         file = open(path)
     except FileNotFoundError:
-        print("No File Found")
+        print("Error: '" + path + "' was not able to be located.")
         sys.exit(1)
     return file
 
