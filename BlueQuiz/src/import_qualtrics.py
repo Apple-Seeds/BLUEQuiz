@@ -5,7 +5,8 @@ import io
 def get_qualtrics_survey(dir_save_survey, survey_id):
     """ automatically query the qualtrics survey data
     taken from: https://gist.github.com/FedericoTartarini/9496282b4b2f508c0ab2da96f4955397
-    guide: https://community.alteryx.com/t5/Alteryx-Designer-Discussions/Python-Tool-Downloading-Qualtrics-Survey-Data-using-Python-API/td-p/304898 """
+    guide: https://community.alteryx.com/t5/Alteryx-Designer-Discussions/Python-Tool-Downloading-Qualtrics-Survey-Data-using-Python-API/td-p/304898
+    api: https://api.qualtrics.com/api-reference/b3A6NjA5OTQ-legacy-create-response-export"""
 
     # Setting user Parameters
     api_token = "wrsAVkCacuCXdr4T4ytrg7GaycHOPiWYjou4D2wZ"

@@ -1,258 +1,68 @@
-import os, sys
-import smtplib, ssl
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
-
-def emailUser(email, colleges, five, results):
-    """ This function handles the email that sends the top five clubs """
-    # Compile Message
-    # Beginning
-    message = MIMEMultipart("alternative")
-    message["Subject"] = email['subject']
-    message["From"] = email['sender']
-    message["To"] = email['receiver']
-    textFile = getFile('../data/result/text_intro.txt')
-    htmlFile = getFile('../data/result/html_intro.txt')
-    for line in textFile:
-        text += line
-    textFile.close()
-    for line in htmlFile:
-        html =+ line
-    htmlFile.close()
-    # Middle
-    for x in range(5):
-        if five[x+1] == "council":
-            text += """
-            """ + results[five[x+1]][1] + """
-                Purpose: """ + results[five[x+1]][2] + """
-            """
-            html += '''
-            <tr>
-                <td aria-hidden="true" height="40" style="font-size: 0px; line-height: 0px;">&nbsp;</td>
-            </tr>
-            <tr>
-                <td>
-                    <img src="''' + results[five[x+1]][0] + '''" style="width: 100%; max-width: 600px;">
-                </td>
-            </tr>
-            <tr>
-                <td style="padding: 10px 20px 20px 20px; font-family:sans-serif; background-color: #eee; width: 100%; max-width: 560px;">
-                    <h1 style="margin: 0 0 10px; text-align: left; font-family:Georgia, serif;">''' + results[five[x+1]][1] + '''</h1>
-                    <p style="text-align: left;"><b>Purpose: </b>''' + results[five[x+1]][2] + '''</p>
-            '''
-            while colleges: # While there's still colleges in the list
-                curCol = colleges.pop(0)
-                text += results[five[x+1]][curCol * 3] + ": " + results[five[x+1]][(curCol * 3) + 2] + "\n"
-                html += '''<p style="text-align: left; margin: 0 0 10px;"><b>''' + results[five[x+1]][curCol * 3] + '''</b><a href="''' + results[five[x+1]][(curCol * 3) + 1] + results[five[x+1]][(curCol * 3) + 2] + '''"> ''' + results[five[x+1]][(curCol * 3) + 2] + '''</a></p>'''
-            html += """
-                           </td>
-                       </tr>"""
-        elif five[x+1] == "fsl":
-            text += """
-            """ + results[five[x+1]][1] + """
-                Purpose: """ + results[five[x+1]][2] + """
-                """ + results[five[x+1]][3] + results[five[x+1]][4] + """
-                """ + results[five[x+1]][5] + results[five[x+1]][6] + """
-            """
-            html += '''
-            <tr>
-                <td aria-hidden="true" height="40" style="font-size: 0px; line-height: 0px;">&nbsp;</td>
-            </tr>
-            <tr>
-                <td>
-                    <img src="''' + results[five[x+1]][0] + '''" alt="TestImage" style="width: 100%; max-width: 600px;">
-                </td>
-            </tr>
-            <tr>
-                <td style="padding: 10px 20px 20px 20px; font-family:sans-serif; background-color: #eee; width: 100%; max-width: 560px;">
-                    <h1 style="margin: 0 0 10px; text-align: left; font-family:Georgia, serif;">''' + results[five[x+1]][1] + '''</h1>
-                    <p style="text-align: left;"><b>Purpose: </b>''' + results[five[x+1]][2] + '''</p>
-                    <p style="text-align: left; margin: 0 0 10px;"><b>''' + results[five[x+1]][3] + '''</b><a href="''' + results[five[x+1]][4] + '''">''' + results[five[x+1]][4] + '''</a></p>
-                    <p style="text-align: left; margin: 0 0 10px;"><b>''' + results[five[x+1]][5] + '''</b><a href="''' + results[five[x+1]][6] + '''">''' + results[five[x+1]][6] + '''</a></p>
-                </td>
-            </tr> 
-            '''
-        else:
-            text += """
-                """ + results[five[x+1]][1] + """
-                Purpose: """ + results[five[x+1]][2] + """
-                """ + results[five[x+1]][3] + results[five[x+1]][4] + """
-                """
-            html += '''
-                <tr>
-                    <td aria-hidden="true" height="40" style="font-size: 0px; line-height: 0px;">&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>
-                        <img src="''' + results[five[x+1]][0] + '''" style="width: 100%; max-width: 600px;">
-                    </td>
-                </tr>
-                <tr>
-                    <td style="padding: 10px 20px 20px 20px; font-family:sans-serif; background-color: #eee; width: 100%; max-width: 560px;">
-                        <h1 style="margin: 0 0 10px; text-align: left; font-family:Georgia, serif;">''' + results[five[x+1]][1] + '''</h1>
-                        <p style="text-align: left;"><b>Purpose: </b>''' + results[five[x+1]][2] + '''</p>
-                        <p style="text-align: left; margin: 0 0 10px;"><b>''' + results[five[x+1]][3] + '''</b><a href="''' + results[five[x+1]][4] + '''">''' + results[five[x+1]][4] + '''</a></p>
-                    </td>
-                </tr> 
-                '''
-    # End
-    html += """
-                        <tr>
-                            <td aria-hidden="true" height="40" style="font-size: 0px; line-height: 0px;">&nbsp;</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </body>
-        </html>
-        """
-    pPart = MIMEText(text, "plain")
-    hPart = MIMEText(html, "html")
-    message.attach(pPart)
-    message.attach(hPart)
-    # Sendoff
-    context = ssl.create_default_context()
-    with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
-        server.login(email['sender'], email['password'])
-        server.sendmail(email['sender'], email['receiver'], message.as_string())
-        print("Email Sent to: " + email['receiver'])
-
-def pull(path, five):
-    """ This function opens a given CSV file and processes it into workable data. """
-    info = {}
-    file = open(path)
-    for line in file:
-        line = line.strip('\n')
-        lineData = line.split('"""')
-        for el in range(len(lineData)):
-            if el != 2 and el != 3
-                lineData[el] = lineData[el].strip(',')
-        if lineData[0] == five:
-            lineData.pop(0)
-            info[five] = lineData
-    file.close()
-    return info
-
-
-def getResults(five):
-    """ This function takes the top five results and points the 'pull' function to the correct csv, returning a dictionary of important club info. """
-    # Setup
-    results = {}
-    # Academic
-    general = ['pcab', 'fees', 'saa', 'council', 'nscsc']
-    medical = ['therapy', 'amsa', 'cadvaer', 'hosa', 'neuro', 'dental', 'pmed', 'physass', 'spmed', 'diet']
-    humanities = ['anthro', 'milpsych', 'globcom', 'colstud', 'natstud', 'mun', 'prssa']
-    business = ['finance', 'sport', 'nsls']
-    etc = ['aspire', 'ram', 'terra']
-    # Recreation
-    athletic = ['hurd', 'canyon', 'archery', 'yoga', 'trail']
-    arts = ['radio', 'blight', 'series', 'film', 'irish', 'bigband', 'cswing']
-    lifestyle = ['blucru', 'activity', 'trad', 'fsl', 'game', 'paint', 'tennis', 'spike']
-    # DEI
-    dei = ['girl', 'nami', 'ostem', 'scandi', 'tagalog', 'transfer']
-    # Service
-    spiritual = ['lds', 'colchrist', 'fellow', 'goldcity', 'varsity', 'navi', 'newman', 'ratio', 'inter', 'ssa']
-    kindness = ['serve', 'rotaract', 'cares', 'bestbud', 'gdays']
-    political = ['dems', 'ydsa', 'surf']
-
-    # Search
-    for org in five:
-        if org in general:
-            path = '../data/clubdata/academic/general.csv'
-            results.update(pull(path, five))
-        elif org in medical:
-            path = '../data/clubdata/academic/medical.csv'
-            results.update(pull(path, five))
-        elif org in humanities:
-            path = '../data/clubdata/academic/humanities.csv'
-            results.update(pull(path, five))
-        elif org in business:
-            path = '../data/clubdata/academic/business.csv'
-            results.update(pull(path, five))
-        elif org in etc:
-            path = '../data/clubdata/academic/etc.csv'
-            results.update(pull(path, five))
-        elif org in athletic:
-            path = '../data/clubdata/recreation/athletic.csv'
-            results.update(pull(path, five))
-        elif org in arts:
-            path = '../data/clubdata/recreation/arts.csv'
-            results.update(pull(path, five))
-        elif org in lifestyle:
-            path = '../data/clubdata/recreation/lifestyle.csv'
-            results.update(pull(path, five))
-        elif org in dei:
-            path = '../data/clubdata/dei/dei.csv'
-            results.update(pull(path, five))
-        elif org in spiritual:
-            path = '../data/clubdata/service/spiritual.csv'
-            results.update(pull(path, five))
-        elif org in kindness:
-            path = '../data/clubdata/service/kindness.csv'
-            results.update(pull(path, five))
-        elif org in political:
-            path = '../data/clubdata/service/political.csv'
-            results.update(pull(path, five))
-    return results
-
+def generateResults(subcats, attribs):
+    """ This function takes the point totals and determines the top five clubs. """
 
 def allocator(data):
-
-
-def lineProcessor(file):
-    """ This function takes the data from the CSV file, rips out the necessary info, and sends it up for processing. """
+    """ This function takes the orderly list of data and sorts all of the points and whatnot. """
     # Setup
-    email = {
-        'sender': "bluequizinvolvement@gmail.com",
-        'password': "wdB!PGbV*GhG&23y",
-        'subject': "Blue Quiz Involvement Survey Results!"
+    data.pop(0) # Unnecessary email data
+    results = []
+    subcats = {
+        'general': 0,
+        'medical': 0,
+        'humanities': 0,
+        'business': 0,
+        'etc': 0,
+        'athletic': 0,
+        'arts': 0,
+        'lifestyle': 0,
+        'dei': 0,
+        'spiritual': 0,
+        'kindness': 0,
+        'political': 0
+    }
+    attribs = {
+        'leader': 0,
+        'helpful': 0,
+        'project': 0,
+        'detail': 0,
+        'political': 0,
+        'aggie': 0,
+        'planner': 0,
+        'extroverted': 0,
+        'creative': 0,
+        'spirit': 0,
+        'athletic': 0,
+        'academic': 0,
     }
 
-    # Processing
-    skipHeadings = 0
-    for line in file:
-        if skipHeadings > 2:
-            # Ripping
-            quizResponses = []
-            line = line.strip('\n')
-            elementList = line.split(',')
-            for el in range(len(elementList)):
-                if el == 0 or el > 5:  # Only take needed information
-                    if len(elementList[el]) == 0:  # Unseen Values
-                        quizResponses.append('0')
-                    else:
-                        quizResponses.append(elementList[el])
-            for data in range(len(quizResponses)):
-                if data != 0 and data != 1:
-                    quizResponses[data] = int(quizResponses[data])
-            # Allocating
-            topFive = allocator(quizResponses)
-            email['receiver'] = topFive.pop(0) # Grab email from resulting list
-            colleges = topFive.pop(0) # Grab college list from resulting list
-            # ID Logging
-            log = open('../data/response_id.txt', 'w')
-            log.write(importantInfo.pop(0))
-            log.close()
-            # Emailing
-            results = getResults(topFive)
-            emailUser(email, colleges, topFive, results)
-        else:
-            skipHeadings += 1
+    # College Collection
+    colleges = []
+    for x in range(10):
+        if (data.pop(0) > 0)
+            colleges.append(x+1)
+    results.append(colleges)
+
+    # Point Allocation
+    # Q2: --------------------------------
+    because = []
+    for x in range(5):
+        if (data.pop(0) > 0)
+            because.append(x+1)
+    if 1 in because:
+        subcats['athletic'] += 2
+        subcats['arts'] += 2
+        subcats['lifestyle'] += 3
+        attribs['extroverted'] += 3
+        attribs['leader'] += 2
+    elif 2 in because:
+        subcats['spiritual'] += 2
+        subcats['kindness'] += 3
+        subcats['political'] += 2
+        attribs['helpful'] += 3
+        attribs['leader'] += 2
+    elif 3 in because:
+        subcats['']
 
 
-def getFile(path):
-    """ This function locates the CSV file and pulls from that. """
-    try:
-        file = open(path)
-    except FileNotFoundError:
-        print("Error: '" + path + "' was not able to be located.")
-        sys.exit(1)
-    return file
-
-
-if __name__ == '__main__':
-    # File Processing
-    filepath = '../data/Blue Quiz V2.csv'
-    fileObj = getFile(filepath)
-    lineProcessor(fileObj)
-    fileObj.close()
-    os.remove(filepath)
+    # Results
+    return generateResults(subcats, attribs)
