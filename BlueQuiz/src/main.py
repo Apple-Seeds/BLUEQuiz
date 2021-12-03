@@ -33,11 +33,11 @@ def emailUser(email, colleges, five, results):
             </tr>
             <tr>
                 <td>
-                    <img src="''' + results[five[x+1]][0] + '''" style="width: 100%; max-width: 600px;">
+                    <img src="''' + results[five[x+1]][0] + '''" style="width: 100%; max-width: 600px; border-radius: 15px 15px 0px 0px;">
                 </td>
             </tr>
             <tr>
-                <td style="padding: 10px 20px 20px 20px; font-family:sans-serif; background-color: #eee; width: 100%; max-width: 560px;">
+                <td style="padding: 10px 20px 20px 20px; font-family:sans-serif; background-color: #eee; width: 100%; max-width: 560px; border-radius: 0px 0px 15px 15px;">
                     <h1 style="margin: 0 0 10px; text-align: left; font-family:Georgia, serif;">''' + results[five[x+1]][1] + '''</h1>
                     <p style="text-align: left;"><b>Purpose: </b>''' + results[five[x+1]][2] + '''</p>
             '''
@@ -61,11 +61,11 @@ def emailUser(email, colleges, five, results):
             </tr>
             <tr>
                 <td>
-                    <img src="''' + results[five[x+1]][0] + '''" alt="TestImage" style="width: 100%; max-width: 600px;">
+                    <img src="''' + results[five[x+1]][0] + '''" alt="TestImage" style="width: 100%; max-width: 600px; border-radius: 15px 15px 0px 0px;">
                 </td>
             </tr>
             <tr>
-                <td style="padding: 10px 20px 20px 20px; font-family:sans-serif; background-color: #eee; width: 100%; max-width: 560px;">
+                <td style="padding: 10px 20px 20px 20px; font-family:sans-serif; background-color: #eee; width: 100%; max-width: 560px; border-radius: 0px 0px 15px 15px;">
                     <h1 style="margin: 0 0 10px; text-align: left; font-family:Georgia, serif;">''' + results[five[x+1]][1] + '''</h1>
                     <p style="text-align: left;"><b>Purpose: </b>''' + results[five[x+1]][2] + '''</p>
                     <p style="text-align: left; margin: 0 0 10px;"><b>''' + results[five[x+1]][3] + '''</b><a href="''' + results[five[x+1]][4] + '''">''' + results[five[x+1]][4] + '''</a></p>
@@ -85,11 +85,11 @@ def emailUser(email, colleges, five, results):
                 </tr>
                 <tr>
                     <td>
-                        <img src="''' + results[five[x+1]][0] + '''" style="width: 100%; max-width: 600px;">
+                        <img src="''' + results[five[x+1]][0] + '''" style="width: 100%; max-width: 600px; border-radius: 15px 15px 0px 0px;">
                     </td>
                 </tr>
                 <tr>
-                    <td style="padding: 10px 20px 20px 20px; font-family:sans-serif; background-color: #eee; width: 100%; max-width: 560px;">
+                    <td style="padding: 10px 20px 20px 20px; font-family:sans-serif; background-color: #eee; width: 100%; max-width: 560px; border-radius: 0px 0px 15px 15px;">
                         <h1 style="margin: 0 0 10px; text-align: left; font-family:Georgia, serif;">''' + results[five[x+1]][1] + '''</h1>
                         <p style="text-align: left;"><b>Purpose: </b>''' + results[five[x+1]][2] + '''</p>
                         <p style="text-align: left; margin: 0 0 10px;"><b>''' + results[five[x+1]][3] + '''</b><a href="''' + results[five[x+1]][4] + '''">''' + results[five[x+1]][4] + '''</a></p>
@@ -120,7 +120,7 @@ def emailUser(email, colleges, five, results):
 def pull(path, five):
     """ This function opens a given CSV file and processes it into workable data. """
     info = {}
-    file = open(path)
+    file = getFile(path)
     for line in file:
         line = line.strip('\n')
         lineData = line.split('"""')
@@ -143,7 +143,7 @@ def getResults(five):
     medical = ['therapy', 'amsa', 'cadvaer', 'hosa', 'neuro', 'dental', 'pmed', 'physass', 'spmed', 'diet']
     humanities = ['anthro', 'milpsych', 'globcom', 'colstud', 'natstud', 'mun', 'prssa']
     business = ['finance', 'sport', 'nsls']
-    etc = ['aspire', 'ram', 'terra']
+    etc = ['aspire', 'ram']
     # Recreation
     athletic = ['hurd', 'canyon', 'archery', 'yoga', 'trail']
     arts = ['radio', 'blight', 'series', 'film', 'irish', 'bigband', 'cswing']
@@ -202,7 +202,7 @@ def lineProcessor(file):
     email = {
         'sender': "bluequizinvolvement@gmail.com",
         'password': "wdB!PGbV*GhG&23y",
-        'subject': "Blue Quiz Involvement Survey Results!"
+        'subject': "BLUE Quiz Involvement Survey Results!"
     }
 
     # Processing
@@ -218,12 +218,12 @@ def lineProcessor(file):
                     if len(elementList[el]) == 0:  # Unseen Values
                         quizResponses.append('-99')
                     else:
-                        quizResponses.append(elementList[el])
-            for data in range(len(quizResponses)):
-                if data > 1:
-                    quizResponses[data] = int(quizResponses[data])
+                        if el < 7:
+                            quizResponses.append(elementList[el])
+                        else:
+                            quizResponses.append(int(quizResponses[el]))
             # ID Logging
-            log = open('../data/response_id.txt', 'w')
+            log = getFile('../data/response_id.txt', 'w')
             log.write(quizResponses.pop(0))
             log.close()
             # Allocating
@@ -238,7 +238,7 @@ def lineProcessor(file):
 
 
 def getFile(path):
-    """ This function locates the CSV file and pulls from that. """
+    """Retrieve a file (usually a .CSV but not always) and pull from that. """
     try:
         file = open(path)
     except FileNotFoundError:
