@@ -1,4 +1,4 @@
-def generateResults(subcats, attribs):
+def generateFive(subcats, attribs):
     """ This function takes the point totals and determines the top five clubs. """
     # Setup
     clubNames = {
@@ -107,7 +107,7 @@ def generateResults(subcats, attribs):
             picks = clubNames[topCats[0]] # Does the top subcat twice
         else:
             picks = clubNames[topCats.pop(0)]
-        # Get Club
+        # Get club
         for y in topClubs:
             if y in picks:
                 five.append(y)
@@ -176,4 +176,4 @@ def allocator(data):
     elif 3 in because:
 
     # Results
-    return colleges + generateResults(subcats, attribs)
+    return colleges + generateFive(subcats, attribs)

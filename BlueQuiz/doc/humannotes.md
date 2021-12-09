@@ -1,0 +1,18 @@
+# Humanity Notes
+- Anthropology
+- Military Psychology
+	- Any points they have for 'mental health' in 'medical' should also go here
+- Global Communication
+	- "I enjoy learning and immersing myself in different cultures."
+- Intercollegiate Studies
+- International Studies
+	- "I'm more interested in what's going on in the US rather than what's going on outside of it."
+- Model UN
+	- 'Public policy' bonus
+- Public Relations SSA
+	- 'Public policy' bonus
+	- Leadership attribute bonus
+	- "I think being a world leader sounds like quite a fun and fulfilling job!"
+- Statesman
+	- Creativity attribute bonus
+	- "I enjoy expressing myself through writing"
