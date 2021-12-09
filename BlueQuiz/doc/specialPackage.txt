@@ -1,0 +1,23 @@
+SA = Simple Add
+E = Evaluate
+
+0: Colleges - SA
+1: Film - SA
+2: Lifestyle Game Club - E
+3: RAM64 BAYBEEEEEE - SA
+4: Transfer Student - SA
+5: Scandivaian - SA
+6: LDSSA - SA
+7: BestBuds - SA
+8: Politics Part 1* - SA
+9: Politics Part 2* - SA
+10: V1 Clubs in General - E
+11: Dentist - SA
+12: Surgeon - SA
+13: Mental - SA
+14: Big Doctor One - SA
+15: Express - E
+16: Finance! - SA
+
+
+* See quiz notes on Q32 and Q33

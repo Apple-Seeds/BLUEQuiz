@@ -14,6 +14,8 @@ def emailUser(email, colleges, five, results):
     message["To"] = email['receiver']
     textFile = getFile('../data/result/text_intro.txt')
     htmlFile = getFile('../data/result/html_intro.txt')
+    text = ''
+    html = ''
     for line in textFile:
         text += line
     textFile.close()
@@ -125,7 +127,7 @@ def pull(path, five):
         line = line.strip('\n')
         lineData = line.split('"""')
         for el in range(len(lineData)):
-            if el != 2 and el != 3
+            if el != 2 and el != 3:
                 lineData[el] = lineData[el].strip(',')
         if lineData[0] == five:
             lineData.pop(0)
@@ -216,20 +218,20 @@ def lineProcessor(file):
             for el in range(len(elementList)):
                 if el == 0 or el > 5:  # Only take needed information
                     if len(elementList[el]) == 0:  # Unseen Values
-                        quizResponses.append('-99')
+                        quizResponses.append('0')
                     else:
                         if el < 7:
                             quizResponses.append(elementList[el])
                         else:
-                            quizResponses.append(int(quizResponses[el]))
+                            quizResponses.append(int(elementList[el]))
             # ID Logging
-            log = getFile('../data/response_id.txt', 'w')
+            log = open('../data/response_id.txt', 'w')
             log.write(quizResponses.pop(0))
             log.close()
             # Allocating
             topFive = allocator(quizResponses)
             colleges = topFive.pop(0) # Grab college list from resulting list
-            # Emailing
+            # # Emailing
             email['receiver'] = quizResponses.pop(0) # Grab email
             results = getResults(topFive)
             emailUser(email, colleges, topFive, results)
