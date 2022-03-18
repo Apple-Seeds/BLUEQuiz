@@ -1,12 +1,14 @@
 import os, sys
 import smtplib, ssl
+import time
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from process_qualtrics import allocator
 
-def emailUser(email, colleges, five, results):
+def emailUser(email, colleges, five, results, times):
     """ This function handles the email that sends the top five clubs """
     # Compile Message
+    before = time.time()
     # Beginning
     message = MIMEMultipart("alternative")
     message["Subject"] = email['subject']
@@ -118,6 +120,11 @@ def emailUser(email, colleges, five, results):
         server.login(email['sender'], email['password'])
         server.sendmail(email['sender'], email['receiver'], message.as_string())
         print("Email Sent to: " + email['receiver'])
+        after = time.time()
+        times.append(after - before)
+        print(f"---Line Strip took: {times[0]:.3f} seconds to run.")
+        print(f"---Processing took: {times[1]:.3f} seconds to run.")
+        print(f"---User Email took: {times[2]:.3f} seconds to run.")
 
 def pull(path, five):
     """ This function opens a given CSV file and processes it into workable data. """
@@ -206,35 +213,42 @@ def lineProcessor(file):
         'password': "wdB!PGbV*GhG&23y",
         'subject': "BLUE Quiz Involvement Survey Results!"
     }
+    times = []
 
     # Processing
     skipHeadings = 0
     for line in file:
         if skipHeadings > 2:
             # Ripping
+            before = time.time()
             quizResponses = []
             line = line.strip('\n')
             elementList = line.split(',')
             for el in range(len(elementList)):
                 if el == 0 or el > 5:  # Only take needed information
                     if len(elementList[el]) == 0:  # Unseen Values
-                        quizResponses.append('0')
+                        quizResponses.append(0)
                     else:
                         if el < 7:
                             quizResponses.append(elementList[el])
                         else:
                             quizResponses.append(int(elementList[el]))
+            after = time.time()
+            times.append(after - before)
             # ID Logging
             log = open('../data/response_id.txt', 'w')
             log.write(quizResponses.pop(0))
             log.close()
             # Allocating
+            before = time.time()
             topFive = allocator(quizResponses)
             colleges = topFive.pop(0) # Grab college list from resulting list
+            after = time.time()
+            times.append(after - before)
             # # Emailing
             email['receiver'] = quizResponses.pop(0) # Grab email
             results = getResults(topFive)
-            emailUser(email, colleges, topFive, results)
+            emailUser(email, colleges, topFive, results, times)
         else:
             skipHeadings += 1
 
@@ -255,4 +269,5 @@ if __name__ == '__main__':
     fileObj = getFile(filepath)
     lineProcessor(fileObj)
     fileObj.close()
-    os.remove(filepath)
+    # os.remove(filepath)
+    print("Run Complete!")

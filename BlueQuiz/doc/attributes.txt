@@ -1,0 +1,40 @@
+'leader': 1, # Leadership Qualities
+'charisma': 0, # One might say...a host?
+'stugov': 0, # Student Gov
+'serve': 1, # Willingness to Serve
+'team': 0, # Team Player
+'project': 1, # Project-Oriented
+'detail': 1, # Detail-Oriented
+'aggie': 0, # Got that Aggie Spirit!
+'extroverted': 0, # Friendly
+'hype': 0, # Loves the big crowds!
+'spirit': 0, # A Spiritual Fellow
+'discuss': 0, # Likes to talk!
+'busybee': 1, # Loves to Stay Busy
+'cozy': 0, # Just lookin' for something relaxing
+'music': 0, # Gotta love those beats!
+
+
+        "leader": 0,
+	"charisma": 0,
+	"hardwork": 0,
+	"team": 0,
+        "project": 0,
+        "detail": 0,
+        "time": 0,
+        "aggie": 0,
+        "hype": 0,
+        "extroverted": 0,
+        "mentor": 0,
+        "music": 0,
+	"discuss": 0,
+	"cozy": 0,
+	"smart": 0,
+	"active": 0,
+	"creative": 0,
+	"faith": 0,
+	"serve": 0,
+	"political": 0,
+	"outdoors": 0,
+	"dance": 0,
+	"cultured": 0,
