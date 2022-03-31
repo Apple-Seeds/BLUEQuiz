@@ -1,8 +1,8 @@
 import random
 
 
-def generateFive(subcats, attribs, specvals):
-    """ This function takes the point totals and determines the top five clubs. """
+def generateThree(subcats, attribs, specvals):
+    """ This function takes the point totals and determines the top three clubs. """
     # Setup
     clubNames = {
         'general': ['pcab', 'fees', 'saa', 'council', 'nscsc', 'aspire'],
@@ -23,153 +23,16 @@ def generateFive(subcats, attribs, specvals):
         for name in clubNames[el]:
             clubPoints[name] = random.randrange(1, 4)
 
-    # # Assign Points
-    # # -- General --
-    # clubPoints['pcab'] = (attribs['leader'] + attribs['project'] + attribs['serve'])
-    # if specvals[10] == 2:
-    #     clubPoints['pcab'] += 2
-    # clubPoints['fees'] = (attribs['detail'] + attribs['time'] + attribs['political'])
-    # if specvals[10] == 1:
-    #     clubPoints['fees'] += 2
-    # clubPoints['saa'] = (attribs['extroverted'] + attribs['mentor'] + attribs['aggie'])
-    # if specvals[10] == 4:
-    #     clubPoints['saa'] += 2
-    # clubPoints['council'] = (attribs['serve'] + attribs['detail'] + attribs['smart'] + len(specvals[0]))
-    # if specvals[10] == 3:
-    #     clubPoints['council'] += 2
-    # clubPoints['nscsc'] = (attribs['leader'] + attribs['mentor'] + attribs['charisma'])
-    # clubPoints['aspire'] = (attribs['project'] + attribs['detail'] + attribs['outdoors'])
-    # if 3 in specvals[0]:
-    #     clubPoints['aspire'] += 3
-    # else:
-    #     clubPoints['aspire'] -= 2
-
-    # # -- Medical --
-    # clubPoints['therapy'] = (attribs['serve'] + attribs['hardwork'] + attribs['active'])
-    # if specvals[14] == 1 or specvals[14] == 2:
-    #     clubPoints['therapy'] += 3
-    # clubPoints['amsa'] = (attribs['leader'] + attribs['team'] + attribs['mentor'])
-    # clubPoints['cadaver'] = (attribs['detail'] + attribs['smart'] + specvals[12])
-    # if specvals[14] == 8:
-    #     clubPoints['cadaver'] += 3
-    # clubPoints['hosa'] = (attribs['leader'] + attribs['team'] + subcats['medical'])
-    # clubPoints['neuro'] = (attribs['detail'] + attribs['smart'])
-    # if specvals[14] == 4:
-    #     clubPoints['neuro'] += 3
-    # clubPoints['dental'] = (attribs['detail'] + attribs['extroverted'] + specvals[11])
-    # if specvals[14] == 5:
-    #     clubPoints['dentist'] += 3
-    # clubPoints['pmed'] = (attribs[''] + attribs[''] + subcats['medical'])
-    # clubPoints['physass'] = (attribs[''] + attribs[''] + attribs[''])
-    # clubPoints['spmed'] = (attribs['cultured'] + attribs[''] + subcats['medical'])
-    # clubPoints['diet'] = (attribs[''] + attribs[''] + attribs[''])
-    # if specvals[14] == 10:
-    #     clubPoints['diet'] += 3
-    # clubPoints['milpsych'] = (attribs['serve'] + attribs[''] + attribs[''] + specvals[13])
-    # if specvals[14] != 12:
-    #     clubPoints['amsa'] += 3
-    #     clubPoints['hosa'] += 3
-    #     clubPoints['pmed'] += 3
-
-    # # -- Humanities --
-    # clubPoints['anthro'] = (attribs[''] + attribs[''] + attribs[''])
-    # clubPoints['glocom'] = (attribs[''] + attribs[''] + attribs[''])
-    # clubPoints['colstud'] = (attribs[''] + attribs[''] + attribs[''])
-    # clubPoints['natstud'] = (attribs[''] + attribs[''] + attribs[''])
-    # clubPoints['mun'] = (attribs[''] + attribs[''] + attribs[''])
-    # if specvals[15] == 2:
-    #     clubPoints['mun'] + 2
-    # clubPoints['prssa'] = (attribs[''] + attribs[''] + attribs[''])
-
-    # # -- Business --
-    # clubPoints['finance'] = (attribs[''] + attribs[''] + attribs[''] + specvals[16])
-    # clubPoints['sport'] = (attribs['active'] + attribs[''] + attribs[''])
-    # clubPoints['nsls'] = (attribs['leader'] + attribs[''] + attribs[''])
-
-    # # -- Athletic --
-    # clubPoints['hurd'] = (attribs[''] + attribs[''] + attribs[''])
-    # clubPoints['canyon'] = (attribs[''] + attribs[''] + attribs[''])
-    # clubPoints['archery'] = (attribs[''] + attribs[''] + attribs[''])
-    # clubPoints['yoga'] = (attribs[''] + attribs[''] + attribs[''])
-    # clubPoints['trail'] = (attribs[''] + attribs[''] + attribs[''])
-
-    # # -- Arts --
-    # clubPoints['radio'] = (attribs[''] + attribs[''] + attribs[''])
-    # clubPoints['blight'] = (attribs[''] + attribs[''] + attribs[''])
-    # clubPoints['series'] = (attribs[''] + attribs[''] + attribs[''])
-    # clubPoints['film'] = (attribs[''] + attribs[''] + attribs[''] + specvals[1])
-    # clubPoints['irish'] = (attribs[''] + attribs[''] + attribs[''])
-    # clubPoints['bigband'] = (attribs[''] + attribs[''] + attribs[''])
-    # clubPoints['cswing'] = (attribs[''] + attribs[''] + attribs[''])
-    # if specvals[15] == 4:
-    #     clubPoints['irish'] += 2
-    #     clubPoints['bigband'] += 2
-    #     clubPoints['cswing'] += 2
-
-    # # -- Lifestyle --
-    # clubPoints['blucru'] = (attribs[''] + attribs[''] + attribs[''])
-    # clubPoints['activity'] = (attribs[''] + attribs[''] + attribs[''])
-    # clubPoints['trad'] = (attribs[''] + attribs[''] + attribs[''])
-    # clubPoints['fsl'] = (attribs[''] + attribs[''] + attribs[''])
-    # clubPoints['game'] = (attribs[''] + attribs[''] + attribs[''])
-    # if specvals[2] == 1:
-    #     clubPoints['game'] += 4
-    # clubPoints['paint'] = (attribs[''] + attribs[''] + attribs[''])
-    # clubPoints['tennis'] = (attribs[''] + attribs[''] + attribs[''])
-    # if specvals[2] == 2:
-    #     clubPoints['tennis'] += 4
-    # clubPoints['spike'] = (attribs[''] + attribs[''] + attribs[''])
-    # if specvals[2] == 3
-    #     clubPoints['spike'] += 4
-    # clubPoints['ram'] = (attribs[''] + attribs[''] + attribs[''])
-    # if 6 in specvals[0]:
-    #     clubPoints['ram'] += 2
-
-    # # -- DEI --
-    # clubPoints['girl'] = (attribs[''] + attribs[''] + attribs[''])
-    # clubPoints['nami'] = (attribs[''] + attribs[''] + attribs[''])
-    # clubPoints['ostem'] = (attribs[''] + attribs[''] + attribs[''])
-    # clubPoints['scandi'] = (attribs[''] + attribs[''] + attribs[''] + specvals[5])
-    # clubPoints['tagalog'] = (attribs[''] + attribs[''] + attribs[''])
-    # clubPoints['transfer'] = (attribs[''] + attribs[''] + attribs[''] + specvals[4])
-
-    # # -- Spiritual --
-    # clubPoints['lds'] = (attribs[''] + attribs[''] + attribs[''] + specvals[6])
-    # clubPoints['colchrist'] = (attribs[''] + attribs[''] + attribs[''])
-    # clubPoints['fellow'] = (attribs[''] + attribs[''] + attribs[''])
-    # clubPoints['goldcity'] = (attribs[''] + attribs[''] + attribs[''])
-    # clubPoints['varsity'] = (attribs[''] + attribs[''] + attribs[''])
-    # clubPoints['navi'] = (attribs[''] + attribs[''] + attribs[''])
-    # clubPoints['newman'] = (attribs[''] + attribs[''] + attribs[''])
-    # clubPoints['ratio'] = (attribs[''] + attribs[''] + attribs[''])
-    # clubPoints['inter'] = (attribs[''] + attribs[''] + attribs[''])
-    # clubPoints['ssa'] = (attribs[''] + attribs[''] + attribs[''])
-
-    # # -- Kindness --
-    # clubPoints['serve'] = (attribs[''] + attribs[''] + attribs[''])
-    # clubPoints['rotaract'] = (attribs[''] + attribs[''] + attribs[''])
-    # clubPoints['cares'] = (attribs[''] + attribs[''] + attribs[''])
-    # clubPoints['bestbud'] = (attribs[''] + attribs[''] + attribs[''] + specvals[7])
-    # clubPoints['gdays'] = (attribs[''] + attribs[''] + attribs[''])
-
-    # # -- Political --
-    # clubPoints['grc'] = (attribs['political'] + attribs['serve'] + specvals[9])
-    # clubPoints['dems'] = (attribs['political'] + attribs['team']  + specvals[8])
-    # clubPoints['ydsa'] = (attribs['political'] + attribs['discuss'] + specvals[8])
-    # clubPoints['surf'] = (attribs['political'] + attribs['mentor'] + specvals[9])
-
-    # # -- Random --
-    # for key in clubPoints:
-    #     for val in key:
-    #         val += random.randrange(1, 4)
+    # Assign Points
+    
 
     # Sort
     topCats = sorted(subcats.items(), key=lambda k: k[1], reverse=True)
     topClubs = sorted(clubPoints.items(), key=lambda k: k[1], reverse=True)
 
     # Results
-    five = []
-    for x in range(5):
+    three = []
+    for x in range(3):
         # Get subcat
         if x < 1:
             picks = clubNames[topCats[0]]  # Does the top subcat twice
@@ -178,10 +41,10 @@ def generateFive(subcats, attribs, specvals):
         # Get club
         for y in topClubs:
             if y in picks:
-                five.append(y)
+                three.append(y)
                 topClubs.remove(y)
                 break
-    return five
+    return three
 
 
 def allocator(data):
@@ -481,4 +344,4 @@ def allocator(data):
     # END ----------------------------------------------
 
     # Results
-    return colleges + generateFive(subcats, attribs, specialPackage)
+    return colleges + generateThree(subcats, attribs, specialPackage)
