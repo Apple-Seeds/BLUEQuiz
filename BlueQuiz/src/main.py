@@ -6,9 +6,7 @@ from email.mime.multipart import MIMEMultipart
 from process_qualtrics import allocator
 
 def emailUser(email, colleges, three, results, times):
-    """ This function handles the email that sends the top three clubs """
-    # Compile Message
-    before = time.time()
+    """ This function compiles the email that sends the top three clubs """
     # Beginning
     message = MIMEMultipart("alternative")
     message["Subject"] = email['subject']
@@ -24,8 +22,9 @@ def emailUser(email, colleges, three, results, times):
     for line in htmlFile:
         html =+ line
     htmlFile.close()
+
     # Middle
-    for x in range(5):
+    for x in range(3):
         if three[x+1] == "council":
             text += """
             """ + results[three[x+1]][1] + """
@@ -77,6 +76,35 @@ def emailUser(email, colleges, three, results, times):
                 </td>
             </tr> 
             '''
+        elif three[x+1] == "christ" or three[x+1] == "party" or three[x+1] == "repo":
+            text += """
+                """ + results[three[x+1]][1] + """
+                Purpose: """ + results[three[x+1]][2]
+            i = 3
+            while three[x+1][i] != "END":
+                text += results[three[x+1]][i] + results[three[x+1]][i+1] + """ """
+                i += 2
+            html += '''
+                <tr>
+                    <td aria-hidden="true" height="40" style="font-size: 0px; line-height: 0px;">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="''' + results[three[x+1]][0] + '''" style="width: 100%; max-width: 600px; border-radius: 15px 15px 0px 0px;">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px 20px 20px 20px; font-family:sans-serif; background-color: #eee; width: 100%; max-width: 560px; border-radius: 0px 0px 15px 15px;">
+                        <h1 style="margin: 0 0 10px; text-align: left; font-family:Georgia, serif;">''' + results[three[x+1]][1] + '''</h1>
+                        <p style="text-align: left;"><b>Purpose: </b>''' + results[three[x+1]][2] + '''</p>''' 
+            i = 3
+            while three[x+1][i] != "END":
+                html += '''<p style="text-align: left; margin: 0 0 10px;"><b>''' + results[three[x+1]][i] + '''</b><a href="''' + results[three[x+1]][i+1] + '''">''' + results[three[x+1]][4] + '''</a></p>'''
+                i += 2
+            html += '''
+                    </td>
+                </tr> 
+                '''
         else:
             text += """
                 """ + results[three[x+1]][1] + """
@@ -100,6 +128,7 @@ def emailUser(email, colleges, three, results, times):
                     </td>
                 </tr> 
                 '''
+
     # End
     html += """
                         <tr>
@@ -114,17 +143,13 @@ def emailUser(email, colleges, three, results, times):
     hPart = MIMEText(html, "html")
     message.attach(pPart)
     message.attach(hPart)
-    # Sendoff
+
+    # Sendoff!
     context = ssl.create_default_context()
     with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
         server.login(email['sender'], email['password'])
         server.sendmail(email['sender'], email['receiver'], message.as_string())
         print("Email Sent to: " + email['receiver'])
-        after = time.time()
-        times.append(after - before)
-        print(f"---Line Strip took: {times[0]:.3f} seconds to run.")
-        print(f"---Processing took: {times[1]:.3f} seconds to run.")
-        print(f"---User Email took: {times[2]:.3f} seconds to run.")
 
 def pull(path, three):
     """ This function opens a given CSV file and processes it into workable data. """
