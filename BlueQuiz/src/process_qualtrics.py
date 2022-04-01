@@ -76,7 +76,24 @@ def allocator(data):
         'political': 0
     }
     attribs = {
-
+        'extrovert': 0,
+        'aggie': 0,
+        'team': 0,
+        'caring': 0,
+        'mentor': 0,
+        'leader': 0,
+        'devout': 0,
+        'reflect': 0,
+        'discuss': 0,
+        'lax': 0,
+        'outdoors': 0,
+        'active': 0,
+        'detailed': 0,
+        'work': 0,
+        'dirty': 0,
+        'smart': 0,
+        'excited': 0,
+        'creative': 0
     }
 
     # College Collection
@@ -244,13 +261,13 @@ def allocator(data):
     attribs['detailed'] += data[13]
     attribs['dirty'] += data[13]
     attribs['work'] += data[13]
-    # Q17: ------------------------------- (I'm not gonna deal with this right now)
+    # Q17: -------------------------------
     subcats['medical'] += data[14]
     clubPoints['milpsych'] += data[14]
     clubPoints['mftsa'] += data[14]
     clubPoints['nami'] += data[14]
-    clubPoints['therapy'] +=
-    clubPoints['diet'] +=
+    clubPoints['therapy'] += 4 - data[14]
+    clubPoints['diet'] += 4 - data[14]
     # Q18: -------------------------------
     subcats['medical'] += data[15]
     clubPoints['amsa'] += data[15]
@@ -343,8 +360,8 @@ def allocator(data):
     subcats['athletic'] += data[23]
     clubPoints['spike'] += data[23]
     clubPoints['volley'] += data[23]
-    clubPoints['archery'] +=
-    clubPoints['yoga'] +=
+    clubPoints['archery'] += 4 - data[23]
+    clubPoints['yoga'] += 4 - data[23]
     attribs['dirty'] += data[23] - 1
     attribs['active'] += data[23] + 1
     # -----------Arts Questions-----------
@@ -553,54 +570,91 @@ def allocator(data):
         subcats['kindness'] -= 3
         attribs['caring'] -= 2
         attribs['team'] -= 1
-    # Q53: ------------------------------- (waiting on this one to see how the data works)
+    # Q53: -------------------------------
+    for x in range(7):
+        choice = 7 - data.pop(50)
+        if x == 0:
+            subcats['spiritual'] += choice
+            attribs['devout'] += choice
+            attribs['reflect'] += choice - 1
+        elif x == 1:
+            subcats['political'] += choice
+            attribs['discuss'] += choice
+            attribs['devout'] += choice - 1
+        elif x == 2:
+            subcats['general'] += choice
+            subcats['medical'] += choice
+            subcats['business'] += choice
+            attribs['smart'] += choice
+            attribs['work'] += choice
+        elif x == 3:
+            subcats['medical'] += choice
+            attribs['outdoors'] += choice
+            attribs['active'] += choice
+        elif x == 4:
+            subcats['lifestyle'] += choice
+            subcats['kindness'] += choice
+            subcats['dei'] += choice - 1
+            attribs['extrovert'] += choice
+            attribs['caring'] += choice
+        elif x == 5:
+            subcats['athletic'] += choice
+            subcats['general'] += choice - 1
+            attribs['aggie'] += choice + 1
+            attribs['leader'] += choice - 1
+        elif x == 6:
+            subcats['dei'] += choice
+            subcats['international'] += choice
+            subcats['spiritual'] += choice
+            attribs['reflect'] += choice
+            attribs['devout'] += choice - 1
     # ---------Spiritual Questions--------
     # Q54: -------------------------------
-    if data[51] == 1:
+    if data[50] == 1:
         subcats['spiritual'] += 3
         clubPoints['lds'] += 5
         attribs['devout'] += 3
         attribs['extrovert'] += 2
-    elif data[51] == 2:
+    elif data[50] == 2:
         subcats['spiritual'] += 3
         clubPoints['christ'] += 5
         attribs['devout'] += 3
         attribs['reflect'] += 2
-    elif data[51] == 3:
+    elif data[50] == 3:
         subcats['spiritual'] += 3
         clubPoints['newman'] += 5
         attribs['devout'] += 3
         attribs['team'] += 2
-    elif data[51] == 4:
+    elif data[50] == 4:
         subcats['spiritual'] += 1
         clubPoints['saa'] += 6
         attribs['devout'] -= 1
         attribs['discuss'] += 3
-    elif data[51] == 5:
+    elif data[50] == 5:
         subcats['spiritual'] += 3
         clubPoints['inter'] += 3
         attribs['reflect'] += 2
     # Q55: -------------------------------
-    subcats['spiritual'] += data[52]
-    attribs['devout'] += (data[52] / 2)
-    attribs['reflect'] += (data[52] / 2)
+    subcats['spiritual'] += data[51]
+    attribs['devout'] += (data[51] / 2)
+    attribs['reflect'] += (data[51] / 2)
     # Q56: -------------------------------
-    clubPoints['inter'] += data[53] + 1
-    attribs['discuss'] += data[53] + 1
-    attribs['reflect'] += data[53]
+    clubPoints['inter'] += data[52] + 1
+    attribs['discuss'] += data[52] + 1
+    attribs['reflect'] += data[52]
     # ---------Kindness Questions---------
     # Q57: -------------------------------
-    data[54] = data[54] + 2
-    subcats['kindness'] += (data[54] * -1)
-    clubPoints['serve'] -= data[54]
-    clubPoints['cares'] -= data[54]
-    attribs['excited'] -= data[54]
-    attribs['caring'] -= data[54]
+    data[53] = data[53] + 2
+    subcats['kindness'] += (data[53] * -1)
+    clubPoints['serve'] -= data[53]
+    clubPoints['cares'] -= data[53]
+    attribs['excited'] -= data[53]
+    attribs['caring'] -= data[53]
     # Q58: -------------------------------
     service = []
     for x in range(5):
-        if data.pop(55) > 0:
-            because.append(x + 1)
+        if data.pop(54) > 0:
+            service.append(x + 1)
     if 1 in service:
         subcats['kindness'] += 3
         clubPoints['cares'] += 3
@@ -623,32 +677,32 @@ def allocator(data):
         attribs['caring'] += 3
         attribs['leader'] += 1
     # Q59: -------------------------------
-    subcats['kindness'] += data[55]
-    clubPoints['rotaract'] += data[55]
-    clubPoints['cares'] += data[55]
-    clubPoints['serve'] += data[55]
-    attribs['caring'] += data[55] - 1
-    attribs['aggie'] += data[55] - 1
-    attribs['leader'] += data[55]
+    subcats['kindness'] += data[54]
+    clubPoints['rotaract'] += data[54]
+    clubPoints['cares'] += data[54]
+    clubPoints['serve'] += data[54]
+    attribs['caring'] += data[54] - 1
+    attribs['aggie'] += data[54] - 1
+    attribs['leader'] += data[54]
     # ---------Political Questions--------
     # Q60: -------------------------------
-    subcats['political'] += data[56]
-    clubPoints['party'] += data[56]
-    attribs['discuss'] += data[56]
-    attribs['caring'] += data[56] - 1
-    attribs['devout'] += data[56]
+    subcats['political'] += data[55]
+    clubPoints['party'] += data[55]
+    attribs['discuss'] += data[55]
+    attribs['caring'] += data[55] - 1
+    attribs['devout'] += data[55]
     # Q61: -------------------------------
-    subcats['political'] += data[57]
-    clubPoints['grc'] += data[57] + 1
-    attribs['discuss'] += data[57]
-    attribs['leader'] += data[57]
-    attribs['work'] += data[57] - 1
+    subcats['political'] += data[56]
+    clubPoints['grc'] += data[56] + 1
+    attribs['discuss'] += data[56]
+    attribs['leader'] += data[56]
+    attribs['work'] += data[56] - 1
     # Q62: -------------------------------
-    subcats['political'] += data[58]
-    clubPoints['repo'] += data[58] + 1
-    attribs['devout'] += data[58]
-    attribs['discuss'] += data[58]
-    attribs['caring'] += data[58] - 1
+    subcats['political'] += data[57]
+    clubPoints['repo'] += data[57] + 1
+    attribs['devout'] += data[57]
+    attribs['discuss'] += data[57]
+    attribs['caring'] += data[57] - 1
     # END ----------------------------------------------
     # Results
     return colleges + generateThree(subcats, attribs, clubNames, clubPoints)
