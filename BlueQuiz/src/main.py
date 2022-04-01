@@ -178,11 +178,11 @@ def getResults(three):
     business = ['algo', 'sport', 'nsls', 'bit']
     # Recreation
     athletic = ['hurd', 'canyon', 'archery', 'yoga', 'trail', 'volley']
-    arts = ['radio', 'blight', 'series', 'film',  'bigband', 'cswing', 'star', 'thea']
+    arts = ['radio', 'blight', 'series', 'states', 'film',  'bigband', 'cswing', 'star', 'thea']
     lifestyle = ['blucru', 'activity', 'trad', 'fsl', 'game', 'paint', 'tennis', 'spike', 'pickle', 'skate', 'aikido', 'snow', 'ram']
     # Humanities
     dei = ['girl', 'ostem', 'transfer', 'story', ' women']
-    international = ['globcom', 'natstud', 'scandi', 'tagalog', 'russia']
+    international = ['globcom', 'natstud', 'scandi', 'tagalog', 'russia', 'irish']
     studies = ['anthro', 'colstud', 'mun', 'prssa', 'phil', 'nsslha']
     # Service
     spiritual = ['lds', 'fellow', 'newman', 'inter', 'ssa', 'christ']
