@@ -4,9 +4,115 @@ import random
 def generateThree(subcats, attribs, names, points):
     """ This function takes the point totals and determines the top three clubs. """
     
-
     # Assign Points
+    # -- General --
+    points['pcab'] = (subcats['general'] + attribs['leader'] + attribs['detailed'])
+    points['fees'] = (subcats['general'] + attribs['detailed'] + attribs['discuss'])
+    points['council'] = (subcats['general'] + attribs['team'] + attribs['work'])
+    points['saa'] = (subcats['general'] + attribs['aggie'] + attribs['mentor'])
+    points['nscsc'] = (subcats['general'] + attribs['smart'] + attribs['work'])
+    points['ento'] = (subcats['general'] + attribs['dirty'] + attribs['outdoors'])
+    points['aspire'] = (subcats['general'] + attribs['smart'] + attribs['excited'])
+
+    # -- Medical --
+    points['therapy'] = (subcats['medical'] + attribs['active'] + attribs['caring'])
+    points['amsa'] = (subcats['medical'] + attribs['leader'] + attribs['work'])
+    points['cadaver'] = (subcats['medical'] + attribs['dirty'] + attribs['detailed'])
+    points['hosa'] = (subcats['medical'] + attribs['leader'] + attribs['smart'])
+    points['neuro'] = (subcats['medical'] + attribs['smart'] + attribs['detailed'])
+    points['dental'] = (subcats['medical'] + attribs['smart'] + attribs['detailed'])
+    points['pmed'] = (subcats['medical'] + attribs['detailed'] + attribs['work'])
+    points['nami'] = (subcats['medical'] + attribs['caring'] + attribs['mentor'])
+    points['physass'] = (subcats['medical'] + attribs['caring'] + attribs['work'])
+    points['span'] = (subcats['medical'] + attribs['discuss'] + attribs['caring'] + subcats['dei'])
+    points['diet'] = (subcats['medical'] + attribs['active'] + attribs['outdoors'])
+    points['milpsych'] = (subcats['medical'] + attribs['caring'] + attribs['smart'])
+    points['mcat'] = (subcats['medical'] + attribs['smart'] + attribs['detailed'])
+    points['mftsa'] = (subcats['medical'] + attribs['caring'] + attribs['mentor'])
+
+    # -- Business --
+    points['algo'] = (subcats['business'] + attribs['smart'] + attribs['detailed'])
+    points['sport'] = (subcats['business'] + attribs['active'] + attribs['leader'])
+    points['nsls'] = (subcats['business'] + attribs['leader'] + attribs['work'])
+    points['bit'] = (subcats['business'] + attribs['smart'] + attribs['detailed'])
+
+    # -- Athletic --
+    points['hurd'] = (subcats['athletic'] + attribs['aggie'] + attribs['extrovert'])
+    points['canyon'] = (subcats['athletic'] + attribs['outdoors'] + attribs['active'])
+    points['archery'] = (subcats['athletic'] + attribs['active'] + attribs['detailed'])
+    points['yoga'] = (subcats['athletic'] + attribs['lax'] + attribs['reflect'])
+    points['trail'] = (subcats['athletic'] + attribs['outdoors'] + attribs['active'])
+    points['volley'] = (subcats['athletic'] + attribs['team'] + attribs['active'])
+
+    # -- Arts --
+    points['radio'] = (subcats['arts'] + attribs['discuss'] + attribs['creative'])
+    points['blight'] = (subcats['arts'] + attribs['creative'] + attribs['detailed'])
+    points['series'] = (subcats['arts'] + attribs['creative'] + attribs['aggie'])
+    points['film'] = (subcats['arts'] + attribs['creative'] + attribs['lax'])
+    points['bigband'] = (subcats['arts'] + attribs['active'] + attribs['extrovert'])
+    points['cswing'] = (subcats['arts'] + attribs['active'] + attribs['extrovert'])
+    points['star'] = (subcats['arts'] + attribs['creative'] + attribs['lax'])
+    points ['thea'] = (subcats['arts'] + attribs['extrovert'] + attribs['creative'])
+
+    # -- Lifestyle --
+    points['blucru'] = (subcats['lifestyle'] + attribs['aggie'] + attribs['work'])
+    points['activity'] = (subcats['lifestyle'] + attribs['extrovert'] + attribs['aggie'])
+    points['trad'] = (subcats['lifestyle'] + attribs['excited'] + attribs['aggie'])
+    points['fsl'] = (subcats['lifestyle'] + attribs['extrovert'] + attribs['team'])
+    points['game'] = (subcats['lifestyle'] + attribs['lax'] + attribs['team'])
+    points['paint'] = (subcats['lifestyle'] + attribs['active'] + attribs['dirty'])
+    points['tennis'] = (subcats['lifestyle'] + attribs['active'] + attribs['detailed'])
+    points['spike'] = (subcats['lifestyle'] + attribs['active'] + attribs['extrovert'])
+    points['pickle'] = (subcats['lifestyle'] + attribs['active'] + attribs['outdoors'])
+    points['skate'] = (subcats['lifestyle'] + attribs['active'] + attribs['excited'])
+    points['aikido'] = (subcats['lifestyle'] + attribs['active'] + attribs['work'])
+    points['snow'] = (subcats['lifestyle'] + attribs['active'] + attribs['outdoors'])
+    points['ram'] = (subcats['lifestyle'] + attribs['outdoors'] + attribs['leader'])
+
+    # -- DEI --
+    points['girl'] = (subcats['dei'] + attribs['discuss'] + attribs['reflect'])
+    points['ostem'] = (subcats['dei'] + attribs['smart'] + attribs['work'])
+    points['transfer'] = (subcats['dei'] + attribs['aggie'] + attribs['extrovert'])
+    points['story'] = (subcats['dei'] + attribs['discuss'] + attribs['caring'])
+    points['women'] = (subcats['dei'] + attribs['smart'] + attribs['work'])
     
+    # -- International --
+    points['globcom'] = (subcats['international'] + attribs['discuss'] + attribs['detailed'])
+    points['natstud'] = (subcats['international'] + attribs['smart'] + attribs['discuss'])
+    points['scandi'] = (subcats['international'] + attribs['discuss'] + attribs['outdoors'])
+    points['tagalog'] = (subcats['international'] + attribs['smart'] + attribs['excited'])
+    points['russia'] = (subcats['international'] + attribs['discuss'] + attribs['excited'])
+    points['irish'] = (subcats['international'] + attribs['active'] + attribs['excited'])
+
+    # -- Studies --
+    points['anthro'] = (subcats['studies'] + attribs['reflect'] + attribs['mentor'])
+    points['colstud'] = (subcats['studies'] + attribs['reflect'] + attribs['discuss'])
+    points['mun'] = (subcats['studies'] + attribs['leader'] + attribs['discuss'])
+    points['prssa'] = (subcats['studies'] + attribs['leader'] + attribs['team'])
+    points['phil'] = (subcats['studies'] + attribs['reflect'] + attribs['discuss'])
+    points['nsslha'] = (subcats['studies'] + attribs['caring'] + attribs['work'])
+
+    # -- Spiritual --
+    points['lds'] = (subcats['spiritual'] + attribs['devout'] + attribs['caring'])
+    points['fellow'] = (subcats['spiritual'] + attribs['devout'] + attribs['active'])
+    points['newman'] = (subcats['spiritual'] + attribs['detailed'] + attribs['team'])
+    points['inter'] = (subcats['spiritual'] + attribs['discuss'] + attribs['reflect'])
+    points['ssa'] = (subcats['spiritual'] + attribs['reflect'] + attribs['lax'])
+    points['christ'] = (subcats['spiritual'] + attribs['devout'] + attribs['discuss'])
+
+    # -- Kindness --
+    points['serve'] = (subcats['kindness'] + attribs['caring'] + attribs['team'])
+    points['rotaract'] = (subcats['kindness'] + attribs['leader'] + attribs['caring'])
+    points['cares'] = (subcats['kindness'] + attribs['caring'] + attribs['aggie'])
+    points['bestbud'] = (subcats['kindness'] + attribs['caring'] + attribs['mentor'])
+    points['gdays'] = (subcats['kindness'] + attribs['caring'] + attribs['dirty'])
+    points['smile'] = (subcats['kindness'] + attribs['caring'] + attribs['mentor'])
+
+    # -- Political --
+    points['grc'] = (subcats['political'] + attribs['leader'] + attribs['discuss'])
+    points['party'] = (subcats['political'] + attribs['discuss'] + attribs['reflect'])
+    points['repo'] = (subcats['political'] + attribs['devout'] + attribs['reflect'])
+
 
     # Sort
     topCats = sorted(subcats.items(), key=lambda k: k[1], reverse=True)
@@ -16,10 +122,7 @@ def generateThree(subcats, attribs, names, points):
     three = []
     for x in range(3):
         # Get subcat
-        if x < 1:
-            picks = names[topCats[0]]  # Does the top subcat twice
-        else:
-            picks = names[topCats.pop(0)]
+        picks = names[topCats.pop(0)]
         # Get club
         for y in topClubs:
             if y in picks:
@@ -130,7 +233,7 @@ def allocator(data):
         attribs['mentor'] += 3
         attribs['leader'] += 2
     elif 3 in because:
-    	subcats['general'] += 3
+        subcats['general'] += 3
         subcats['medical'] += 3
         subcats['business'] += 4
         attribs['leader'] += 3
@@ -147,7 +250,7 @@ def allocator(data):
         attribs['caring'] += 4
         attribs['reflect'] += 3
     elif 5 in because:
-    	subcats['athletic'] += 3
+        subcats['athletic'] += 3
         subcats['arts'] += 3
         subcats['lifestyle'] += 4
         subcats['spiritual'] += 3
@@ -250,6 +353,9 @@ def allocator(data):
     clubPoints['aspire'] += data[12] + 2
     attribs['smart'] += data[12] + 2
     attribs['excited'] += data[12]
+    if 3 in colleges or 5 in colleges:
+        if data[12] > 2:
+            clubPoints['aspire'] += 5
     # ---------Medical Questions----------
     # Q16: -------------------------------
     subcats['medical'] += data[13]
@@ -428,7 +534,7 @@ def allocator(data):
         attribs['team'] += 2
     elif data[27] == 4:
         subcats['lifestyle'] += 2
-    elif data[27] = 5:
+    elif data[27] == 5:
         subcats['lifestyle'] -= 2
     # Q31: -------------------------------
     subcats['lifestyle'] += data[28]
@@ -484,6 +590,8 @@ def allocator(data):
     clubPoints['transfer'] += data[36] + 1
     attribs['aggie'] += data[36]
     attribs['excited'] += data[36] - 1
+    if data[36] > 2:
+        clubPoints['transfer'] += 3
     # Q40: -------------------------------
     subcats['dei'] += data[37]
     clubPoints['girl'] += data[37]
@@ -496,6 +604,9 @@ def allocator(data):
     clubPoints['women'] += data[38]
     attribs['aggie'] += data[38] - 1
     attribs['work'] += data[38]
+    if data[38] > 2:
+        clubPoints['ostem'] += 3
+        clubPoints['women'] += 3
     # -------International Questions------
     # Q42: -------------------------------
     subcats['international'] += data[39]
