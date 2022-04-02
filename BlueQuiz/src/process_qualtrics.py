@@ -3,7 +3,7 @@ import random
 
 def generateThree(subcats, attribs, names, points):
     """ This function takes the point totals and determines the top three clubs. """
-    
+
     # Assign Points
     # -- General --
     points['pcab'] = (subcats['general'] + attribs['leader'] + attribs['detailed'])
@@ -24,7 +24,7 @@ def generateThree(subcats, attribs, names, points):
     points['pmed'] = (subcats['medical'] + attribs['detailed'] + attribs['work'])
     points['nami'] = (subcats['medical'] + attribs['caring'] + attribs['mentor'])
     points['physass'] = (subcats['medical'] + attribs['caring'] + attribs['work'])
-    points['span'] = (subcats['medical'] + attribs['discuss'] + attribs['caring'] + int(subcats['dei']/1.5))
+    points['span'] = (subcats['medical'] + attribs['discuss'] + attribs['caring'] + int(subcats['dei'] / 1.5))
     points['diet'] = (subcats['medical'] + attribs['active'] + attribs['outdoors'])
     points['milpsych'] = (subcats['medical'] + attribs['caring'] + attribs['smart'])
     points['mcat'] = (subcats['medical'] + attribs['smart'] + attribs['detailed'])
@@ -52,7 +52,7 @@ def generateThree(subcats, attribs, names, points):
     points['bigband'] = (subcats['arts'] + attribs['active'] + attribs['extrovert'])
     points['cswing'] = (subcats['arts'] + attribs['active'] + attribs['extrovert'])
     points['star'] = (subcats['arts'] + attribs['creative'] + attribs['lax'])
-    points ['thea'] = (subcats['arts'] + attribs['extrovert'] + attribs['creative'])
+    points['thea'] = (subcats['arts'] + attribs['extrovert'] + attribs['creative'])
 
     # -- Lifestyle --
     points['blucru'] = (subcats['lifestyle'] + attribs['aggie'] + attribs['work'])
@@ -75,7 +75,7 @@ def generateThree(subcats, attribs, names, points):
     points['transfer'] = (subcats['dei'] + attribs['aggie'] + attribs['extrovert'])
     points['story'] = (subcats['dei'] + attribs['discuss'] + attribs['caring'])
     points['women'] = (subcats['dei'] + attribs['smart'] + attribs['work'])
-    
+
     # -- International --
     points['globcom'] = (subcats['international'] + attribs['discuss'] + attribs['detailed'])
     points['natstud'] = (subcats['international'] + attribs['smart'] + attribs['discuss'])
@@ -113,7 +113,6 @@ def generateThree(subcats, attribs, names, points):
     points['party'] = (subcats['political'] + attribs['discuss'] + attribs['reflect'])
     points['repo'] = (subcats['political'] + attribs['devout'] + attribs['reflect'])
 
-
     # Sort
     topCats = sorted(subcats.items(), key=lambda k: k[1], reverse=True)
     topClubs = sorted(points.items(), key=lambda k: k[1], reverse=True)
@@ -137,12 +136,14 @@ def allocator(data):
     # Club Setup
     clubNames = {
         'general': ['pcab', 'fees', 'council', 'saa', 'nscsc', 'ento', 'aspire'],
-        'medical': ['therapy', 'amsa', 'cadvaer', 'hosa', 'neuro', 'dental', 'pmed', 'nami', 'physass', 'span', 'diet', 'milpsych', 'mcat', 'mftsa'],
+        'medical': ['therapy', 'amsa', 'cadvaer', 'hosa', 'neuro', 'dental', 'pmed', 'nami', 'physass', 'span', 'diet',
+                    'milpsych', 'mcat', 'mftsa'],
         'business': ['algo', 'sport', 'nsls', 'bit'],
 
         'athletic': ['hurd', 'canyon', 'archery', 'yoga', 'trail', 'volley'],
-        'arts': ['radio', 'blight', 'series', 'states', 'film',  'bigband', 'cswing', 'star', 'thea'],
-        'lifestyle': ['blucru', 'activity', 'trad', 'fsl', 'game', 'paint', 'tennis', 'spike', 'pickle', 'skate', 'aikido', 'snow', 'ram'],
+        'arts': ['radio', 'blight', 'series', 'states', 'film', 'bigband', 'cswing', 'star', 'thea'],
+        'lifestyle': ['blucru', 'activity', 'trad', 'fsl', 'game', 'paint', 'tennis', 'spike', 'pickle', 'skate',
+                      'aikido', 'snow', 'ram'],
 
         'dei': ['girl', 'ostem', 'transfer', 'story', 'women'],
         'international': ['globcom', 'natstud', 'scandi', 'tagalog', 'russia', 'irish'],
@@ -158,23 +159,22 @@ def allocator(data):
             clubPoints[name] = random.randrange(1, 4)
 
     # Data Setup
-    email = []
-    email.append(data.pop(0))  # Unnecessary email data
+    email = [data.pop(0)]
     results = []
     subcats = {
-    	#-Academic-
+        # -Academic-
         'general': 0,
         'medical': 0,
         'business': 0,
-        #-Recreation-
+        # -Recreation-
         'athletic': 0,
         'arts': 0,
         'lifestyle': 0,
-        #-DEI-
+        # -DEI-
         'dei': 0,
         'international': 0,
         'studies': 0,
-        #-Service-
+        # -Service-
         'spiritual': 0,
         'kindness': 0,
         'political': 0
@@ -420,8 +420,8 @@ def allocator(data):
         subcats['lifestyle'] += 3
         attribs['lax'] += 4
         attribs['outdoors'] += 2
-        attribs['work'] -= 1 
-    # Q22: -------------------------------
+        attribs['work'] -= 1
+        # Q22: -------------------------------
     subcats['athletic'] += data[19]
     attribs['active'] += data[19]
     attribs['dirty'] += data[19] - 1
@@ -447,7 +447,7 @@ def allocator(data):
         subcats['athletic'] += 3
         attribs['outdoors'] += 4
         attribs['lax'] += 1
-    elif data[20] == 5:
+    elif data[20] == 6:
         subcats['athletic'] -= 1
         subcats['arts'] -= 1
         subcats['lifestyle'] -= 1
@@ -570,7 +570,7 @@ def allocator(data):
     attribs['excited'] += data[32] - 1
     # Q36: -------------------------------
     subcats['dei'] += data[33] + 1
-    subcats['political'] += data[33] # (not technically in this category, but it felt good to add here)
+    subcats['political'] += data[33]  # (not technically in this category, but it felt good to add here)
     attribs['caring'] += data[33]
     attribs['discuss'] += data[33]
     attribs['leader'] += data[33] - 1

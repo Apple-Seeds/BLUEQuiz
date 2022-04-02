@@ -2,6 +2,7 @@ import requests
 import zipfile
 import io
 
+
 def get_qualtrics_survey(dir_save_survey, survey_id):
     """ automatically query the qualtrics survey data
     taken from: https://gist.github.com/FedericoTartarini/9496282b4b2f508c0ab2da96f4955397
@@ -14,11 +15,11 @@ def get_qualtrics_survey(dir_save_survey, survey_id):
     # Setting user Parameters
     api_token = "wrsAVkCacuCXdr4T4ytrg7GaycHOPiWYjou4D2wZ"
     file_format = "csv"
-    data_center = 'usu.co1' # "<Organization ID>.<Datacenter ID>"
+    data_center = 'usu.co1'  # "<Organization ID>.<Datacenter ID>"
     recode_value = "0"
     ## Response ID Parameter
     file = open("../data/response_id.txt")
-    response_ID = file.read() # '","lastResponseId":"' + response_ID  +
+    response_ID = file.read()  # '","lastResponseId":"' + response_ID  +
     file.close()
 
     # Setting static parameters
@@ -32,8 +33,9 @@ def get_qualtrics_survey(dir_save_survey, survey_id):
 
     # Step 1: Creating Data Export
     download_request_url = base_url
-    download_request_payload = '{"format":"' + file_format + '","surveyId":"' + survey_id + '","seenUnansweredRecode":"' + recode_value + '","lastResponseId":"' + response_ID + '"}' # you can set useLabels:True to get responses in text format
-    download_request_response = requests.request("POST", download_request_url, data=download_request_payload, headers=headers)
+    download_request_payload = '{"format":"' + file_format + '","surveyId":"' + survey_id + '","seenUnansweredRecode":"' + recode_value + '","lastResponseId":"' + response_ID + '"}'  # you can set useLabels:True to get responses in text format
+    download_request_response = requests.request("POST", download_request_url, data=download_request_payload,
+                                                 headers=headers)
     progress_id = download_request_response.json()["result"]["id"]
     # print(download_request_response.text)
 
@@ -51,8 +53,8 @@ def get_qualtrics_survey(dir_save_survey, survey_id):
     zipfile.ZipFile(io.BytesIO(request_download.content)).extractall(dir_save_survey)
     print('Downloaded qualtrics survey')
 
-if __name__ == "__main__":
 
+if __name__ == "__main__":
     path = "../data/"
 
-    get_qualtrics_survey(dir_save_survey = path, survey_id = "SV_3fxVsxTkGZde6bk")
+    get_qualtrics_survey(dir_save_survey=path, survey_id="SV_3fxVsxTkGZde6bk")
