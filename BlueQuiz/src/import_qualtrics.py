@@ -32,7 +32,7 @@ def get_qualtrics_survey(dir_save_survey, survey_id):
 
     # Step 1: Creating Data Export
     download_request_url = base_url
-    download_request_payload = '{"format":"' + file_format + '","surveyId":"' + survey_id + '","seenUnansweredRecode":"' + recode_value + '"}' # you can set useLabels:True to get responses in text format
+    download_request_payload = '{"format":"' + file_format + '","surveyId":"' + survey_id + '","seenUnansweredRecode":"' + recode_value + '","lastResponseId":"' + response_ID + '"}' # you can set useLabels:True to get responses in text format
     download_request_response = requests.request("POST", download_request_url, data=download_request_payload, headers=headers)
     progress_id = download_request_response.json()["result"]["id"]
     # print(download_request_response.text)

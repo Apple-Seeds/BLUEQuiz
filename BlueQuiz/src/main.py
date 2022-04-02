@@ -86,10 +86,10 @@ def emailUser(email, colleges, three, results):
         elif three[x] == "christ" or three[x] == "party" or three[x] == "repo":
             text += """
                 """ + results[three[x]][1] + """
-                Purpose: """ + results[three[x]][2]
+                Purpose: """ + results[three[x]][2] + """\n"""
             i = 3
-            while three[x][i] != "END":
-                text += results[three[x]][i] + results[three[x]][i + 1] + """ """
+            while results[three[x]][i] != "END":
+                text += results[three[x]][i] + results[three[x]][i + 1] + """\n"""
                 i += 2
             html += '''
                 <tr>
@@ -106,10 +106,9 @@ def emailUser(email, colleges, three, results):
                     results[three[x]][1] + '''</h1>
                         <p style="text-align: left;"><b>Purpose: </b>''' + results[three[x]][2] + '''</p>'''
             i = 3
-            while three[x][i] != "END":
-                html += '''<p style="text-align: left; margin: 0 0 10px;"><b>''' + results[three[x]][
-                    i] + '''</b><a href="''' + results[three[x]][i + 1] + '''">''' + results[three[x]][
-                            4] + '''</a></p>'''
+            while results[three[x]][i] != "END":
+                html += '''<p style="text-align: left; margin: 0 0 10px;"><b>''' + results[three[x]][i] \
+                        + '''</b><a href="''' + results[three[x]][i + 1] + '''">''' + results[three[x]][i + 1] + '''</a></p>'''
                 i += 2
             html += '''
                     </td>
