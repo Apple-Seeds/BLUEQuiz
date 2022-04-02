@@ -24,7 +24,7 @@ def generateThree(subcats, attribs, names, points):
     points['pmed'] = (subcats['medical'] + attribs['detailed'] + attribs['work'])
     points['nami'] = (subcats['medical'] + attribs['caring'] + attribs['mentor'])
     points['physass'] = (subcats['medical'] + attribs['caring'] + attribs['work'])
-    points['span'] = (subcats['medical'] + attribs['discuss'] + attribs['caring'] + subcats['dei'])
+    points['span'] = (subcats['medical'] + attribs['discuss'] + attribs['caring'] + int(subcats['dei']/1.5))
     points['diet'] = (subcats['medical'] + attribs['active'] + attribs['outdoors'])
     points['milpsych'] = (subcats['medical'] + attribs['caring'] + attribs['smart'])
     points['mcat'] = (subcats['medical'] + attribs['smart'] + attribs['detailed'])
@@ -122,11 +122,11 @@ def generateThree(subcats, attribs, names, points):
     three = []
     for x in range(3):
         # Get subcat
-        picks = names[topCats.pop(0)]
+        picks = names[topCats[x][0]]
         # Get club
         for y in topClubs:
-            if y in picks:
-                three.append(y)
+            if y[0] in picks:
+                three.append(y[0])
                 topClubs.remove(y)
                 break
     return three
@@ -144,7 +144,7 @@ def allocator(data):
         'arts': ['radio', 'blight', 'series', 'states', 'film',  'bigband', 'cswing', 'star', 'thea'],
         'lifestyle': ['blucru', 'activity', 'trad', 'fsl', 'game', 'paint', 'tennis', 'spike', 'pickle', 'skate', 'aikido', 'snow', 'ram'],
 
-        'dei': ['girl', 'ostem', 'transfer', 'story', ' women'],
+        'dei': ['girl', 'ostem', 'transfer', 'story', 'women'],
         'international': ['globcom', 'natstud', 'scandi', 'tagalog', 'russia', 'irish'],
         'studies': ['anthro', 'colstud', 'mun', 'prssa', 'phil', 'nsslha'],
 
@@ -158,7 +158,8 @@ def allocator(data):
             clubPoints[name] = random.randrange(1, 4)
 
     # Data Setup
-    data.pop(0)  # Unnecessary email data
+    email = []
+    email.append(data.pop(0))  # Unnecessary email data
     results = []
     subcats = {
     	#-Academic-
@@ -555,7 +556,7 @@ def allocator(data):
     # Q34: -------------------------------
     subcats['lifestyle'] += data[31]
     clubPoints['blucru'] += data[31]
-    clubPoints['active'] += data[31]
+    clubPoints['activity'] += data[31]
     clubPoints['trad'] += data[31]
     clubPoints['fsl'] += data[31]
     attribs['aggie'] += data[31]
@@ -816,4 +817,4 @@ def allocator(data):
     attribs['caring'] += data[57] - 1
     # END ----------------------------------------------
     # Results
-    return colleges + generateThree(subcats, attribs, clubNames, clubPoints)
+    return colleges + email + generateThree(subcats, attribs, clubNames, clubPoints)
