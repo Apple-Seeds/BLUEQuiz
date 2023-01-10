@@ -313,10 +313,14 @@ def getFile(path):
 
 
 if __name__ == '__main__':
-    # File Processing
-    filepath = '../data/Blue Quiz V2.csv'
-    fileObj = getFile(filepath)
-    lineProcessor(fileObj)
-    fileObj.close()
-    os.remove(filepath)
-    print("Run Complete!")
+    try:
+        # File Processing
+        filepath = '../data/Blue Quiz V2.csv'
+        fileObj = getFile(filepath)
+        lineProcessor(fileObj)
+        fileObj.close()
+        os.remove(filepath)
+        print("Run Complete!")
+    except:
+        #os.system('sleep 1m | sudo reboot')
+        print("nope")
